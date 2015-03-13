@@ -82,10 +82,11 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 nextIntent = new Intent(this, MainActivity.class);
                 break;
             case (R.id.answer3):
-                nextIntent = new Intent(this, MainActivity.class);
+                nextIntent = new Intent(this, Cutscene.class);
+                nextIntent.putExtra("VIDEOID", "mSvuHSqqGSw");
                 break;
             default:
-                nextIntent = null;
+                return;
         }
 
         nextIntent.putExtra("POINTS", points);
