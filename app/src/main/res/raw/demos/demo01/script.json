@@ -1,10 +1,11 @@
+
 {
   "name": "Epizod 1",
   "nodes": [
     {
       "type": "cutscene",
       "name": "Goldeneye opening [HD]",
-      "movie": "https://www.youtube.com/watch?v=mSvuHSqqGSw"
+      "movie": "mSvuHSqqGSw"
     },
     {
       "type": "scene",
