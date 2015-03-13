@@ -11,12 +11,13 @@ import android.widget.Button;
 
 import java.util.Random;
 
-public class MainActivity extends Activity implements View.OnClickListener {
-    public static String INTENT_INDEX = "INDEX";
-    public static String INTENT_POINTS = "POINTS";
+public class MainActivity extends Activity {
 
-    int points;
-    int index;
+    public static enum ExtraKey {INDEX, POINTS, EPISODE, VIDEOID}
+
+    private int points;
+    private int index;
+    private int episode;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,18 +26,19 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
         Intent incomingIntent = this.getIntent();
 
-        index = incomingIntent.getIntExtra(INTENT_INDEX, 0);
-        points = incomingIntent.getIntExtra(INTENT_POINTS, 0);
+        index = incomingIntent.getIntExtra(ExtraKey.INDEX.name(), 0);
+        points = incomingIntent.getIntExtra(ExtraKey.POINTS.name(), 0);
+        episode = incomingIntent.getIntExtra(ExtraKey.EPISODE.name(), 0);
 
         Log.d("StateLog", "Application index: " + index);
         Log.d("StateLog", "Points: " + points);
 
         int buttonCount = 4;
-        Button[] b =  {
-                (Button)findViewById(R.id.answer0),
-                (Button)findViewById(R.id.answer1),
-                (Button)findViewById(R.id.answer2),
-                (Button)findViewById(R.id.answer3)};
+        Button[] b = {
+                (Button) findViewById(R.id.answer0),
+                (Button) findViewById(R.id.answer1),
+                (Button) findViewById(R.id.answer2),
+                (Button) findViewById(R.id.answer3)};
 
         Random r = new Random();
         r.setSeed(2531 + index * 123143 + points * 43223);
@@ -67,7 +69,6 @@ public class MainActivity extends Activity implements View.OnClickListener {
         return super.onOptionsItemSelected(item);
     }
 
-    @Override
     public void onClick(View view) {
         Intent nextIntent;
 
@@ -83,14 +84,15 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 break;
             case (R.id.answer3):
                 nextIntent = new Intent(this, Cutscene.class);
-                nextIntent.putExtra("VIDEOID", "mSvuHSqqGSw");
+                nextIntent.putExtra(ExtraKey.VIDEOID.name(), "mSvuHSqqGSw");
                 break;
             default:
                 return;
         }
 
-        nextIntent.putExtra("POINTS", points);
-        nextIntent.putExtra("INDEX", index+1);
+        nextIntent.putExtra(ExtraKey.POINTS.name(), points);
+        nextIntent.putExtra(ExtraKey.INDEX.name(), index + 1);
+        nextIntent.putExtra(ExtraKey.EPISODE.name(), episode);
         startActivity(nextIntent);
     }
 }

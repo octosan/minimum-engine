@@ -1,0 +1,59 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ff000000"
+    tools:context="pl.nag.MainActivity">
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:text="Episode complete"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <RatingBar
+        android:id="@+id/scoreBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/title"
+        android:layout_centerHorizontal="true"
+        android:numStars="3"
+        android:rating="0"
+        android:stepSize="1" />
+
+    <Button
+        android:id="@+id/continueGame"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/scoreBar"
+        android:layout_alignStart="@+id/scoreBar"
+        android:layout_below="@+id/scoreBar"
+        android:onClick="continueGame"
+        android:text="Continue" />
+
+    <Button
+        android:id="@+id/replayGame"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/scoreBar"
+        android:layout_toEndOf="@+id/continueGame"
+        android:layout_toRightOf="@+id/continueGame"
+        android:onClick="replayGame"
+        android:text="Play again" />
+
+    <TextView
+        android:id="@+id/description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/continueGame"
+        android:layout_centerHorizontal="true"
+        android:text="To be continued..."
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+</RelativeLayout>
