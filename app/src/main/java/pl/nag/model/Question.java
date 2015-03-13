@@ -19,4 +19,12 @@ public class Question {
     public void setText(String text) {
         this.text = text;
     }
+
+    @Override
+    public String toString() {
+        return "Question{" +
+                "name='" + name + '\'' +
+                ", text='" + text + '\'' +
+                '}';
+    }
 }

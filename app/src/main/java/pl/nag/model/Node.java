@@ -64,4 +64,17 @@ public class Node {
     public void setAnswer(Answer answer) {
         this.answer = answer;
     }
+
+    @Override
+    public String toString() {
+        return "Node{" +
+                "type='" + type + '\'' +
+                ", name='" + name + '\'' +
+                ", movie='" + movie + '\'' +
+                ", description='" + description + '\'' +
+                ", image='" + image + '\'' +
+                ", question=" + question +
+                ", answer=" + answer +
+                '}';
+    }
 }

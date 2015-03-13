@@ -4,7 +4,7 @@ import java.util.List;
 
 public class Script {
     private String name;
-    private List<Node> node;
+    private List<Node> nodes;
 
     public String getName() {
         return name;
@@ -14,11 +14,19 @@ public class Script {
         this.name = name;
     }
 
-    public List<Node> getNode() {
-        return node;
+    public List<Node> getNodes() {
+        return nodes;
     }
 
-    public void setNode(List<Node> node) {
-        this.node = node;
+    public void setNodes(List<Node> nodes) {
+        this.nodes = nodes;
+    }
+
+    @Override
+    public String toString() {
+        return "Script{" +
+                "name='" + name + '\'' +
+                ", node=" + nodes +
+                '}';
     }
 }
