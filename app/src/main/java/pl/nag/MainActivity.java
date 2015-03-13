@@ -7,6 +7,9 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
+
+import java.util.Random;
 
 public class MainActivity extends Activity implements View.OnClickListener {
     public static String INTENT_INDEX = "INDEX";
@@ -27,6 +30,19 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
         Log.d("StateLog", "Application index: " + index);
         Log.d("StateLog", "Points: " + points);
+
+        int buttonCount = 4;
+        Button[] b =  {
+                (Button)findViewById(R.id.answer0),
+                (Button)findViewById(R.id.answer1),
+                (Button)findViewById(R.id.answer2),
+                (Button)findViewById(R.id.answer3)};
+
+        Random r = new Random();
+        r.setSeed(2531 + index * 123143 + points * 43223);
+        for (int i = 0; i < buttonCount; i++) {
+            b[i].setText(Integer.toString(r.nextInt()));
+        }
     }
 
     @Override
@@ -54,8 +70,6 @@ public class MainActivity extends Activity implements View.OnClickListener {
     @Override
     public void onClick(View view) {
         Intent nextIntent;
-
-
 
         switch (view.getId()) {
             case (R.id.answer0):
