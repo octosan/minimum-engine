@@ -40,24 +40,24 @@
     {
       "type": "dialog",
       "question": {
-        "name": "Ktoś",
-        "text": "Gdzie byłeś? Gdzie twoi towarzysze?"
+        "name": "Zenek",
+        "text": "W takim razie otoczymy ich od srodka!"
       },
       "answer": {
         "name": "Bond",
         "options": [
           {
-            "text": "Jestem sam.",
+            "text": "Do dziela.",
             "value": 1
           },
           {
-            "text": "Zostali w aucie."
+            "text": "Za królowa."
           },
           {
-            "text": "Są za tobą."
+            "text": "Zapomnialem dodać, że mam pistolet."
           },
           {
-            "text": "Otaczają nas."
+            "text": "Scrabble."
           }
         ]
       }
@@ -70,24 +70,24 @@
     {
       "type": "dialog",
       "question": {
-        "name": "Ktoś",
-        "text": "Gdzie byłeś? Gdzie twoi towarzysze?"
+        "name": "Money Penny",
+        "text": "Jestes moim bohaterem!"
       },
       "answer": {
         "name": "Bond",
         "options": [
           {
-            "text": "Jestem sam.",
+            "text": "Wiadomo.",
             "value": 1
           },
           {
-            "text": "Zostali w aucie."
+            "text": "Jestem bohaterem nas wszystkich."
           },
           {
-            "text": "Są za tobą."
+            "text": "Nazywam sie bohater, bohater Bond."
           },
           {
-            "text": "Otaczają nas."
+            "text": "O której konczysz."
           }
         ]
       }
