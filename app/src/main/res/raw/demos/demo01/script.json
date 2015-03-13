@@ -1,0 +1,101 @@
+{
+  "name": "Epizod 1",
+  "nodes": [
+    {
+      "type": "cutscene",
+      "name": "Goldeneye opening [HD]",
+      "movie": "https://www.youtube.com/watch?v=mSvuHSqqGSw"
+    },
+    {
+      "type": "scene",
+      "title": "Fabryka Broni Chemicznej, Archangel, ZSRR",
+      "image": "https://subjectnavigator.files.wordpress.com/2008/11/filmdam.jpg",
+      "description": "Bond wchodzi do ciemnego pomieszczenia. Ktoś celuje do niego z pistoletu."
+    },
+    {
+      "type": "dialog",
+      "question": {
+        "name": "Ktoś",
+        "text": "Gdzie byłeś? Gdzie twoi towarzysze?"
+      },
+      "answer": {
+        "name": "Bond",
+        "options": [
+          {
+            "text": "Jestem sam.",
+            "value": 1
+          },
+          {
+            "text": "Zostali w aucie."
+          },
+          {
+            "text": "Są za tobą."
+          },
+          {
+            "text": "Otaczają nas."
+          }
+        ]
+      }
+    },
+    {
+      "type": "dialog",
+      "question": {
+        "name": "Ktoś",
+        "text": "Gdzie byłeś? Gdzie twoi towarzysze?"
+      },
+      "answer": {
+        "name": "Bond",
+        "options": [
+          {
+            "text": "Jestem sam.",
+            "value": 1
+          },
+          {
+            "text": "Zostali w aucie."
+          },
+          {
+            "text": "Są za tobą."
+          },
+          {
+            "text": "Otaczają nas."
+          }
+        ]
+      }
+    },
+    {
+      "type": "cutscene",
+      "name": "Goldeneye action scene",
+      "movie": "https://www.youtube.com/watch?v=mSvuHSqqGSw"
+    },
+    {
+      "type": "dialog",
+      "question": {
+        "name": "Ktoś",
+        "text": "Gdzie byłeś? Gdzie twoi towarzysze?"
+      },
+      "answer": {
+        "name": "Bond",
+        "options": [
+          {
+            "text": "Jestem sam.",
+            "value": 1
+          },
+          {
+            "text": "Zostali w aucie."
+          },
+          {
+            "text": "Są za tobą."
+          },
+          {
+            "text": "Otaczają nas."
+          }
+        ]
+      }
+    },
+    {
+      "type": "cutscene",
+      "name": "Goldeneye credits.",
+      "movie": "https://www.youtube.com/watch?v=mSvuHSqqGSw"
+    }
+  ]
+}
