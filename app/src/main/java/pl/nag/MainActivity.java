@@ -8,6 +8,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import java.io.UnsupportedEncodingException;
 import java.util.Arrays;
@@ -19,6 +20,7 @@ import pl.nag.model.Script;
 import pl.nag.model.ScriptQuestionsTraverser;
 
 public class MainActivity extends Activity {
+
     public static Script script = null;
     public static ScriptQuestionsTraverser traverser;
 
@@ -36,7 +38,7 @@ public class MainActivity extends Activity {
         index = incomingIntent.getIntExtra(ExtraKey.INDEX.name(), 0);
         points = incomingIntent.getIntExtra(ExtraKey.POINTS.name(), 0);
         episode = incomingIntent.getIntExtra(ExtraKey.EPISODE.name(), 0);
-       
+
         try {
             if (script == null) {
                 script = new Parser().parse(this);
@@ -49,18 +51,19 @@ public class MainActivity extends Activity {
         Log.d("StateLog", "Application index: " + index);
         Log.d("StateLog", "Points: " + points);
 
-        int buttonCount = 4;
-        Button[] b =  {
-                (Button)findViewById(R.id.answer0),
-                (Button)findViewById(R.id.answer1),
-                (Button)findViewById(R.id.answer2),
-                (Button)findViewById(R.id.answer3)};
-
+        TextView description = (TextView) findViewById(R.id.description);
+        description.setText(traverser.getDescription());
+        TextView question = (TextView) findViewById(R.id.question);
+        question.setText(traverser.getQuestion());
+        Button[] b = {
+                (Button) findViewById(R.id.answer0),
+                (Button) findViewById(R.id.answer1),
+                (Button) findViewById(R.id.answer2),
+                (Button) findViewById(R.id.answer3)};
         Answer answer = traverser.getNextAnswer();
-
         List<Button> buttons = Arrays.asList(b);
         Collections.shuffle(buttons);
-        for (int i = 0; i < buttonCount; i++) {
+        for (int i = 0; i < b.length; i++) {
             buttons.get(i).setText(answer.getOptions().get(i).getText());
         }
     }
@@ -109,7 +112,7 @@ public class MainActivity extends Activity {
         }
 
         nextIntent.putExtra(ExtraKey.POINTS.name(), points);
-        nextIntent.putExtra(ExtraKey.INDEX.name(), index+1);
+        nextIntent.putExtra(ExtraKey.INDEX.name(), index + 1);
         startActivity(nextIntent);
     }
 }

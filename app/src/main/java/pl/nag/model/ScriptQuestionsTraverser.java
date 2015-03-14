@@ -21,6 +21,27 @@ public class ScriptQuestionsTraverser {
     }
 
     private boolean isDialog() {
-        return script.getNodes().get(currentIndex).getType().equals("dialog");
+        return getCurrentNode().getType().equals("dialog");
+    }
+
+    public String getDescription() {
+        return notNull(getCurrentNode().getDescription());
+    }
+
+    public String getQuestion() {
+        Question question = getCurrentNode().getQuestion();
+        String result = "";
+        if (question != null) {
+            result = notNull(question.getName()) + ": " + notNull(question.getText());
+        }
+        return result;
+    }
+
+    private Node getCurrentNode() {
+        return script.getNodes().get(currentIndex);
+    }
+
+    private String notNull(String text) {
+        return text != null ? text : "";
     }
 }
