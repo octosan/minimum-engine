@@ -13,7 +13,7 @@ public class Option {
     }
 
     public double getValue() {
-        return Double.parseDouble(value);
+        return value != null ? Double.parseDouble(value) : 0;
     }
 
     public void setValue(String value) {
