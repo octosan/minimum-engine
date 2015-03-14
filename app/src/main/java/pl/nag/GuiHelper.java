@@ -4,7 +4,9 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
+import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 /**
@@ -24,6 +26,14 @@ public class GuiHelper {
             }
         } catch (Resources.NotFoundException e) {
             GuiHelper.toast(activity, imageName + "  not found");
+        }
+    }
+
+    public static void setTextOrHide(TextView view, String text) {
+        if (text != null && !text.isEmpty()) {
+            view.setText(text);
+        } else {
+            view.setVisibility(View.GONE);
         }
     }
 }

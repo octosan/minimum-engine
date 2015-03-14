@@ -43,8 +43,8 @@ public class CutsceneActivity extends Activity {
         scriptManager = ((NakApp) getApplication()).getScriptManager();
         scriptManager.setNodeIndex(index);
 
-        name.setText(scriptManager.getName());
-        description.setText(scriptManager.getDescription());
+        GuiHelper.setTextOrHide(name, scriptManager.getName());
+        GuiHelper.setTextOrHide(description, scriptManager.getDescription());
         GuiHelper.updateImageViewByRaw(this, R.id.imageView, scriptManager.getImageName());
         videoId = scriptManager.getMovie();
         if (videoId == null || videoId.isEmpty()) {
