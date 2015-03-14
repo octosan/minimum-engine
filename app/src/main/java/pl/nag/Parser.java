@@ -13,7 +13,7 @@ import pl.nag.model.Script;
 
 public class Parser {
 
-    private static final String script = "script";
+    private static final String script = "goldeneyeepisod1";
 
     public Script parse(Context context) throws UnsupportedEncodingException {
         InputStream ins = context.getResources().openRawResource(
