@@ -67,6 +67,7 @@ public class CutsceneActivity extends Activity {
         nextIntent.putExtra(ExtraKey.IMAGE.name(), image);
         nextIntent.putExtra(ExtraKey.VIDEO_ID.name(), scriptManager.getMovie());
         nextIntent.putExtra(ExtraKey.POINTS.name(), getIntent().getDoubleExtra(ExtraKey.POINTS.name(), 0.0f));
+        nextIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         Log.i("Navi", "Going to index " + (index + 1));
         startActivity(nextIntent);
     }
