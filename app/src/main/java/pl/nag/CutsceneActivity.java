@@ -58,7 +58,6 @@ public class CutsceneActivity extends Activity {
 
     public void showMovie(View view) {
         new Cutscene(this).startIntent(videoId);
-
     }
 
     public void continueGame(View view) {
