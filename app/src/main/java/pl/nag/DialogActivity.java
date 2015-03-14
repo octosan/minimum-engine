@@ -77,37 +77,30 @@ public class DialogActivity extends Activity {
     }
 
     private Class getNextNodeType(String nextNodeType) {
-        if (nextNodeType.equals("scene")) {
-            return Cutscene.class;
-        }
-        if (nextNodeType.equals("cutscene")) {
-            return Cutscene.class;
-        }
-        if (nextNodeType.equals("dialog")) {
-            return Dialog.class;
+        if (nextNodeType != null) {
+            if (nextNodeType.equals("scene")) {
+                return CutsceneActivity.class;
+            }
+            if (nextNodeType.equals("cutscene")) {
+                return CutsceneActivity.class;
+            }
+            if (nextNodeType.equals("dialog")) {
+                return DialogActivity.class;
+            }
         }
         return null;
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
+        return id == R.id.action_settings ? true : super.onOptionsItemSelected(item);
     }
 
     public void onClick(View view) {
