@@ -17,12 +17,12 @@ import java.util.List;
 
 import pl.nag.model.Answer;
 import pl.nag.model.Script;
-import pl.nag.model.ScriptQuestionsTraverser;
+import pl.nag.model.ScriptManager;
 
 public class MainActivity extends Activity {
 
     public static Script script = null;
-    public static ScriptQuestionsTraverser traverser;
+    public static ScriptManager scriptManager;
 
     private int points;
     private int index;
@@ -42,7 +42,7 @@ public class MainActivity extends Activity {
         try {
             if (script == null) {
                 script = new Parser().parse(this);
-                traverser = new ScriptQuestionsTraverser(script);
+                scriptManager = new ScriptManager(script);
             }
         } catch (UnsupportedEncodingException e) {
             throw new RuntimeException(e);
@@ -52,15 +52,15 @@ public class MainActivity extends Activity {
         Log.d("StateLog", "Points: " + points);
 
         TextView description = (TextView) findViewById(R.id.description);
-        description.setText(traverser.getDescription());
+        description.setText(scriptManager.getDescription());
         TextView question = (TextView) findViewById(R.id.question);
-        question.setText(traverser.getQuestion());
+        question.setText(scriptManager.getQuestion());
         Button[] b = {
                 (Button) findViewById(R.id.answer0),
                 (Button) findViewById(R.id.answer1),
                 (Button) findViewById(R.id.answer2),
                 (Button) findViewById(R.id.answer3)};
-        Answer answer = traverser.getNextAnswer();
+        Answer answer = scriptManager.getNextAnswer();
         List<Button> buttons = Arrays.asList(b);
         Collections.shuffle(buttons);
         for (int i = 0; i < b.length; i++) {

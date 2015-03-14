@@ -1,11 +1,11 @@
 package pl.nag.model;
 
-public class ScriptQuestionsTraverser {
+public class ScriptManager {
     int currentIndex = 0;
 
     Script script;
 
-    public ScriptQuestionsTraverser(Script script) {
+    public ScriptManager(Script script) {
         this.script = script;
     }
 
