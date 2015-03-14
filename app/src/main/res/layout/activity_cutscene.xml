@@ -5,13 +5,8 @@
     tools:context="pl.nag.DialogActivity">
 
     <ImageView
-<<<<<<< Updated upstream
-        android:layout_width="wrap_content"
-        android:layout_height="150dp"
-=======
         android:layout_width="match_parent"
-        android:layout_height="200dp"
->>>>>>> Stashed changes
+        android:layout_height="150dp"
         android:id="@+id/imageView"
         android:background="@android:color/black"
         android:layout_alignParentTop="true"
