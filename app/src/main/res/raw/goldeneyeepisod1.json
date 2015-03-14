@@ -210,6 +210,7 @@
 	},
 	{
 		type: "dialog",
+		image: "episod1orumow",
 		question: {
 			name: "Ourumow",
 			text: "Jestem pułkownik Ourumow. Wyjść z rękami nad głową!"
@@ -238,16 +239,19 @@
       },
 	  {
          type:"scene",
+         image: "episod1orumow",
          name:"Ourumow",
          description:"Wyjdź! Rzuć broń i podejdź. Powoli."
       },
 	  	  {
          type:"scene",
+         image: "episod1alecdying",
          name:"Alec",
          description:"Skończ robotę, James! Wysadź ich do diabła!"
       },
 	 {  
          type:"dialog",
+         image: "episod1orumow",
          question:{
             name:"Ourumow",
             text:"Masz dziesięć sekund. Dziesięć... dziewięć... osiem..."
@@ -264,6 +268,7 @@
       }, 
 	  	  {
          type:"scene",
+         image: "episod1orumow",
          name:"Ourumow",
          description:"...siedem...sześć...pięć...cztery..."
       },
@@ -274,11 +279,13 @@
       },
 	  	  	  {
          type:"scene",
+         image: "episod1orumow",
          name:"Ourumow",
          description:"...trzy...dwa..."
       },
 	  	  	  {
          type:"scene",
+         image: "episod1alecdying",
          name:"Alec",
          description:"DlaAnglii,
 		James!!!"
