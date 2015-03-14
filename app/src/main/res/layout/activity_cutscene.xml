@@ -2,14 +2,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ff000000"
     tools:context="pl.nag.DialogActivity">
 
     <ImageView
+<<<<<<< Updated upstream
         android:layout_width="wrap_content"
         android:layout_height="150dp"
+=======
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+>>>>>>> Stashed changes
         android:id="@+id/imageView"
-        android:background="@drawable/bg"
+        android:background="@android:color/black"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
