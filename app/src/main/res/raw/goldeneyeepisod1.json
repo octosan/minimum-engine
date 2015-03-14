@@ -4,6 +4,7 @@
     {
       "type": "cutscene",
       "name": "Goldeneye opening [HD]",
+      "image": "episod1filmdam",
       "movie": "mSvuHSqqGSw"
     },
     {
@@ -14,6 +15,7 @@
     },
     {
       "type": "dialog",
+      "image": "episod1darkness",
       "question": {
         "name": "Ktoś",
         "text": "Gdzie byłeś? Gdzie twoi towarzysze?"
@@ -198,6 +200,7 @@
     },
     {
       "type": "dialog",
+      image: "episod1alecshouting",
       "question": {
         "name": "Alec",
         "text": "Zamykają! Ostatnie zamówienie!"
@@ -223,7 +226,8 @@
     },
     {
       "type": "scene",
-      "description": "Rosjanie strzelają, aż szyba pęka."
+      "description": "Rosjanie strzelają, aż szyba pęka.",
+      "image": "episod1russiansoldiers"
     },
     {
       "type": "dialog",
@@ -314,7 +318,7 @@
       "type": "scene",
       "image": "episod1alecdying",
       "name": "Alec",
-      "description": "DlaAnglii,J ames!!!"
+      "description": "Dla Anglii, James!!!"
     },
     {
       "type": "scene",
@@ -324,19 +328,23 @@
     {
       "type": "scene",
       "name": "Ourumow",
+      "image": "episod1orumow",
       "description": "To twoja ostatnia szansa! Wyjdź z rękami nad głową..."
     },
     {
       "type": "scene",
+      "image": "episod1bond",
       "description": "Bond szybko chowa się za wózkiem."
     },
     {
       "type": "scene",
       "name": "Ourumow",
+      "image": "episod1orumow",
       "description": "Nie możesz wygrać."
     },
     {
       "type": "dialog",
+      "image": "episod1russiansoldiers",
       "question": {
         "text": "Rosjanie strzelają. Bond wskakuje na taśmociąg i strzela."
       },
