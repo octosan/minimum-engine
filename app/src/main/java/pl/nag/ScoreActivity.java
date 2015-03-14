@@ -11,7 +11,7 @@ import butterknife.InjectView;
 
 public class ScoreActivity extends Activity {
 
-    @InjectView(R.id.episode1)
+    @InjectView(R.id.scoreBar)
     RatingBar scoreBar;
 
     @Override
