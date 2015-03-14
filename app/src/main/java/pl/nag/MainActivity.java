@@ -2,14 +2,19 @@ package pl.nag;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.io.File;
+import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 import java.util.Arrays;
 import java.util.Collections;
@@ -115,4 +120,14 @@ public class MainActivity extends Activity {
         nextIntent.putExtra(ExtraKey.INDEX.name(), index + 1);
         startActivity(nextIntent);
     }
+
+   private void loadImage(String image) {
+       InputStream ins = getResources().openRawResource(
+               getResources().getIdentifier(image,
+                       "raw", getPackageName()));
+
+       Bitmap myBitmap = BitmapFactory.decodeStream(ins);
+       ImageView myImage = (ImageView) findViewById(R.id.imageView);
+       myImage.setImageBitmap(myBitmap);
+   }
 }
