@@ -1,7 +1,6 @@
 package pl.nag.model;
 
 import android.content.Context;
-import android.util.Log;
 
 import java.io.UnsupportedEncodingException;
 
