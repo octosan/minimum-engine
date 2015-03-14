@@ -22,7 +22,7 @@ public class CutsceneActivity extends Activity {
         ((NakApp) getApplication()).getScriptManager().setNodeIndex(index);
 
         videoId = incomingIntent.getStringExtra(ExtraKey.VIDEOID.name());
-        if (videoId == null && videoId.isEmpty()) {
+        if (videoId == null || videoId.isEmpty()) {
             Button showMovie = (Button) findViewById(R.id.showMovie);
             showMovie.setVisibility(View.GONE);
         }
@@ -34,7 +34,7 @@ public class CutsceneActivity extends Activity {
     }
 
     public void continueGame(View view) {
-        Intent nextIntent = new Intent(this, ((NakApp) getApplication()).whatsNext());
+        Intent nextIntent = new Intent(this, ((NakApp) getApplication()).getNextActivityClass());
         nextIntent.putExtra(ExtraKey.INDEX.name(), index + 1);
         nextIntent.putExtra(ExtraKey.POINTS.name(), getIntent().getDoubleExtra(ExtraKey.POINTS.name(), 0.0f));
         startActivity(nextIntent);

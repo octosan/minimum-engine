@@ -23,7 +23,7 @@ public class NakApp extends Application {
         scriptManager = new ScriptManager(this.getApplicationContext());
     }
 
-    public Class whatsNext() {
+    public Class getNextActivityClass() {
         return getNextNodeType(scriptManager.getNextNodeType());
     }
 

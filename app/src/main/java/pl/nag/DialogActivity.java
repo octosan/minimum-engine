@@ -11,8 +11,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
@@ -22,17 +24,20 @@ import java.util.Map;
 import pl.nag.model.Answer;
 
 public class DialogActivity extends Activity {
-    private Map<Integer, Double> pointsMap = new HashMap<Integer, Double>();
+
+    private static final List<Integer> ANSWERS_IDS = Arrays.asList(R.id.answer0, R.id.answer1, R.id.answer2, R.id.answer3);
     public static ScriptManager scriptManager = null;
 
+    private Map<Integer, Double> pointsMap = new HashMap<Integer, Double>();
     private double points;
     private int index;
     private int episode;
+    private List<Button> buttons = new ArrayList<Button>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_dialog);
 
         Intent incomingIntent = this.getIntent();
 
@@ -55,16 +60,30 @@ public class DialogActivity extends Activity {
         question.setText(scriptManager.getQuestion());
         updateImage(scriptManager.getImageName());
 
+        ProgressBar timeLeftBar = (ProgressBar) findViewById(R.id.timeLeft);
+        new TimeLeftTimer(timeLeftBar, new OnFinishCallback() {
+            @Override
+            public void onFinish() {
+                for (Button b : buttons) {
+                    if (b.getId() == R.id.answer0) {
+                        onClick(b);
+                    } else {
+                        b.setEnabled(false);
+                    }
+                }
+            }
+        }).start();
+
         // Shuffling of buttons
-        List<Integer> buttons = Arrays.asList(R.id.answer0, R.id.answer1, R.id.answer2, R.id.answer3);
         Answer answer = scriptManager.getNextAnswer();
-        Collections.shuffle(buttons);
-        for (int i = 0; i < buttons.size(); i++) {
-            Button button = (Button) findViewById(buttons.get(i));
+        Collections.shuffle(ANSWERS_IDS);
+        for (int i = 0; i < ANSWERS_IDS.size(); i++) {
+            Button button = (Button) findViewById(ANSWERS_IDS.get(i));
             if (answer != null && answer.getOptions() != null && answer.getOptions().get(i) != null) {
                 button.setText(answer.getOptions().get(i).getText());
             }
-            pointsMap.put(buttons.get(i), answer.getOptions().get(i).getValue());
+            pointsMap.put(ANSWERS_IDS.get(i), answer.getOptions().get(i).getValue());
+            buttons.add(button);
         }
     }
 
@@ -85,8 +104,8 @@ public class DialogActivity extends Activity {
         Intent nextIntent;
 
         if (pointsMap.containsKey(view.getId())) {
-            nextIntent = new Intent(this, ((NakApp) getApplication()).whatsNext());
-            nextIntent.putExtra(ExtraKey.VIDEOID.name(), "mSvuHSqqGSw"); // TODO
+            nextIntent = new Intent(this, ((NakApp) getApplication()).getNextActivityClass());
+            nextIntent.putExtra(ExtraKey.VIDEOID.name(), scriptManager.getMovie());
             nextIntent.putExtra(ExtraKey.POINTS.name(), points + pointsMap.get(view.getId()));
             nextIntent.putExtra(ExtraKey.INDEX.name(), index + 1);
         } else {
