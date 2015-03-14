@@ -1,7 +1,8 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="android:Theme.Black.NoTitleBar.Fullscreen">
+    <style name="AppTheme" parent="android:Theme.NoTitleBar.Fullscreen">
+        <item name="android:background" >#111</item>
         <item name="android:buttonStyle">@style/button</item>
         <item name="android:padding">3dp</item>
     </style>
