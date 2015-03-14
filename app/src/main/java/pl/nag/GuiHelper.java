@@ -1,7 +1,10 @@
 package pl.nag;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.view.View;
@@ -35,5 +38,25 @@ public class GuiHelper {
         } else {
             view.setVisibility(View.GONE);
         }
+    }
+
+    public static void popModal(final Context ctx) {
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(ctx);
+        builder.setMessage("Powrot do menu?");
+        builder.setPositiveButton(/* R.string.ok */ "OK", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                Intent intent = new Intent(ctx, MenuActivity.class);
+                ctx.startActivity(intent);
+            }
+        });
+        builder.setNegativeButton(/*R.string.cancel*/ "NOK", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                // Do nothing
+            }
+        });
+
+        AlertDialog dialog = builder.create();
+        dialog.show();
     }
 }

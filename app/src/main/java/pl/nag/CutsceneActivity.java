@@ -74,4 +74,8 @@ public class CutsceneActivity extends Activity {
         startActivity(nextIntent);
     }
 
+    @Override
+    public void onBackPressed() {
+        GuiHelper.popModal(this);
+    }
 }

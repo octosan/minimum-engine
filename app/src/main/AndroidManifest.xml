@@ -19,10 +19,12 @@
         <activity
             android:name=".DialogActivity"
             android:label="@string/title_activity_main"
-            android:screenOrientation="landscape"></activity>
+            android:screenOrientation="landscape"
+            android:clearTaskOnLaunch="true" />
         <activity
             android:name=".CutsceneActivity"
-            android:screenOrientation="landscape" />
+            android:screenOrientation="landscape"
+            android:clearTaskOnLaunch="true" />
         <activity
             android:name=".ScoreActivity"
             android:screenOrientation="landscape" />
