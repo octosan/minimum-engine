@@ -64,8 +64,8 @@ public class DialogActivity extends Activity {
         Log.d("StateLog", "Points: " + points);
 
         // View setup
-        description.setText(scriptManager.getDescription());
-        question.setText(scriptManager.getQuestion());
+        GuiHelper.setTextOrHide(description, scriptManager.getDescription());
+        GuiHelper.setTextOrHide(question, scriptManager.getQuestion());
         if(scriptManager.getImageName() != null){
             image = scriptManager.getImageName();
         }

@@ -1,336 +1,372 @@
 {
-	name: "Epizod 1",
-	nodes: [{
-		type: "cutscene",
-		name: "Goldeneye opening [HD]",
-		movie: "mSvuHSqqGSw"
-	},
-	{
-		type: "scene",
-		name: "Fabryka Broni Chemicznej, Archangel, ZSRR",
-		image: "episod1filmdam",
-		description: "Bond wchodzi do ciemnego pomieszczenia. Ktoś celuje do niego z pistoletu."
-	},
-	{
-		type: "dialog",
-		question: {
-			name: "Ktoś",
-			text: "Gdzie byłeś? Gdzie twoi towarzysze?"
-		},
-		answer: {
-			name: "Bond",
-			options: [{
-				text: "Jestem sam."
-			},
-			{
-				text: "Zostali w aucie."
-			},
-			{
-				text: "Są za tobą."
-			},
-			{
-				text: "Otaczają nas."
-			}]
-		}
-	},
-	{
-		type: "scene",
-		image: "episod1alecseanbean",
-		description: "Alec Trevelyan, 006, wchodzi w zasięg światła."
-	},
-	{
-		type: "dialog",
-		question: {
-			name: "Alec",
-			text: "Jak my wszyscy. Spóźniłeś się, 007."
-		},
-		answer: {
-			name: "Bond",
-			options: [{
-				text: "Musiałem zatrzymać się w łazience."
-			},
-			{
-				text: "Musiałem coś zjeść."
-			},
-			{
-				text: "Musiałem wyprowadzić psa."
-			},
-			{
-				text: "Ostatni będą pierwszymi."
-			}]
-		}
-	},
-	{
-		type: "dialog",
-		question: {
-			name: "Alec",
-			text: "Gotowy na ponowne ratowanie świata?"
-		},
-		answer: {
-			name: "Bond",
-			options: [{
-				text: "Za tobą, 006."
-			},
-			{
-				text: "Jeszcze chwila, 006."
-			},
-			{
-				text: "Znowu?"
-			},
-			{
-				text: "Jak zawsze."
-			}]
-		}
-	},
-	{
-		type: "dialog",
-		question: {
-			name: "Alec",
-			text: "James, dla Anglii."
-		},
-		answer: {
-			name: "Bond",
-			options: [{
-				text: "Dla Anglii, Alec."
-			},
-			{
-				text: "Za królową, Alec."
-			},
-			{
-				text: "Skopmy parę tyłków, Alec."
-			},
-			{
-				text: "Jupikjej, Alec."
-			}]
-		}
-	},
-	{
-		type: "scene",
-		image: "episod1bondandtrevelyan",
-		description: "Wchodzą do pomieszczenia wypełnionego zbiornikami zabójczego gazu."
-	},
-	{
-		type: "scene",
-		name: "Bond",
-		description: "To jest zbyt proste."
-	},
-	{
-		type: "dialog",
-		question: {
-			name: "Alec",
-			text: " Połową wszystkiego jest szczęście."
-		},
-		answer: {
-			name: "Bond",
-			options: [{
-				text: "A druga połowa?"
-			},
-			{
-				text: "Szczęście jest nam pisane."
-			},
-			{
-				text: "Ale szczecie to nie hazard, to ciężka praca, planowanie."
-			},
-			{
-				text: "Aby osiągnąć szczęście, trzeba znać cierpienie."
-			}]
-		}
-	},
-	{
-		type: "scene",
-		name: "Alec",
-		description: "Przeznaczenie!"
-	},
-	{
-		type: "scene",
-		description: "Pojawia się czerwone światło, syrena alarmu w fabryce. Mężczyźni zbiegają ze schodów."
-	},
-	{
-		type: "dialog",
-		question: {
-			name: "Alec",
-			text: "Ustaw czas na sześć minut!"
-		},
-		answer: {
-			name: "Bond",
-			options: [{
-				text: "Sześć minut, przyjęte."
-			},
-			{
-				text: "Sześć minut, bez odbioru."
-			},
-			{
-				text: "Sześć minut jest dla mięczaków."
-			},
-			{
-				text: "Sześć minut, nie za dużo?"
-			}]
-		}
-	},
-	{
-		type: "scene",
-		description: "Cyfrowy zegar nastawiony. James i Alec przebiegają między zbiornikami zakładając bomby. Sowiecki dowódca, Ourumow, pojawia się za pancerną szybą.",
-		image: "episod1orumow"
-	},
-	{
-		type: "scene",
-		name: "Ourumow",
-		description: "Ognia!!!"
-	},
-	{
-		type: "dialog",
-		question: {
-			name: "Alec",
-			text: "Zamykają! Ostatnie zamówienie!"
-		},
-		answer: {
-			name: "",
-			options: [{
-				text: "Kup mi piwo!"
-			},
-			{
-				text: "Kup mi Martini!"
-			},
-			{
-				text: "Kup mi małesgo pieska."
-			},
-			{
-				text: "Martini, wstrząśnięte, nie zmieszane."
-			}]
-		}
-	},
-	{
-		type: "scene",
-		description: "Rosjanie strzelają, aż szyba pęka."
-	},
-	{
-		type: "dialog",
-		image: "episod1orumow",
-		question: {
-			name: "Ourumow",
-			text: "Jestem pułkownik Ourumow. Wyjść z rękami nad głową!"
-		},
-		answer: {
-			name: "Bond",
-			options: [{
-				text: "Oryginalne..."
-			},
-			{
-				text: "Nie zgadzam się."
-			},
-			{
-				text: "Dzień dobry pułkowniku."
-			},
-			{
-				text: "Tak, proszę pana."
-			}]
-		}
-	},
-	{
-		type: "scene",
-		description: "Alec klęczy przed pułkownikiem, ten mierzy do niego z pistoletu. Trzydziestu żołnierzy ma na muszce Bonda.",
-		image: "episod1alecdying"
+  "name": "Epizod 1",
+  "nodes": [
+    {
+      "type": "cutscene",
+      "name": "Goldeneye opening [HD]",
+      "movie": "mSvuHSqqGSw"
+    },
+    {
+      "type": "scene",
+      "name": "Fabryka Broni Chemicznej, Archangel, ZSRR",
+      "image": "episod1filmdam",
+      "description": "Bond wchodzi do ciemnego pomieszczenia. Ktoś celuje do niego z pistoletu."
+    },
+    {
+      "type": "dialog",
+      "question": {
+        "name": "Ktoś",
+        "text": "Gdzie byłeś? Gdzie twoi towarzysze?"
       },
-	  {
-         type:"scene",
-         image: "episod1orumow",
-         name:"Ourumow",
-         description:"Wyjdź! Rzuć broń i podejdź. Powoli."
+      "answer": {
+        "name": "Bond",
+        "options": [
+          {
+            "text": "Jestem sam.",
+            "value": 1
+          },
+          {
+            "text": "Zostali w aucie."
+          },
+          {
+            "text": "Są za tobą."
+          },
+          {
+            "text": "Otaczają nas."
+          }
+        ]
+      }
+    },
+    {
+      "type": "scene",
+      "image": "episod1alecseanbean",
+      "description": "Alec Trevelyan, 006, wchodzi w zasięg światła."
+    },
+    {
+      "type": "dialog",
+      "question": {
+        "name": "Alec",
+        "text": "Jak my wszyscy. Spóźniłeś się, 007."
       },
-	  	  {
-         type:"scene",
-         image: "episod1alecdying",
-         name:"Alec",
-         description:"Skończ robotę, James! Wysadź ich do diabła!"
+      "answer": {
+        "name": "Bond",
+        "options": [
+          {
+            "text": "Musiałem zatrzymać się w łazience.",
+            "value": 1
+          },
+          {
+            "text": "Musiałem coś zjeść."
+          },
+          {
+            "text": "Musiałem wyprowadzić psa."
+          },
+          {
+            "text": "Ostatni będą pierwszymi."
+          }
+        ]
+      }
+    },
+    {
+      "type": "dialog",
+      "question": {
+        "name": "Alec",
+        "text": "Gotowy na ponowne ratowanie świata?"
       },
-	 {  
-         type:"dialog",
-         image: "episod1orumow",
-         question:{
-            name:"Ourumow",
-            text:"Masz dziesięć sekund. Dziesięć... dziewięć... osiem..."
-         },
-         answer:{
-            name:"Bond",
-            options:[
-               {text:"Zmieniam czas na trzy minuty."},
-               {text:"Zmieniam czas na sześć minut."},
-               {text:"Zmieniam czas na pół godziny."},
-               {text:"Wyłączam licznik."}
-            ]
-         }
-      }, 
-	  	  {
-         type:"scene",
-         image: "episod1orumow",
-         name:"Ourumow",
-         description:"...siedem...sześć...pięć...cztery..."
+      "answer": {
+        "name": "Bond",
+        "options": [
+          {
+            "text": "Za tobą, 006.",
+            "value": 1
+          },
+          {
+            "text": "Jeszcze chwila, 006."
+          },
+          {
+            "text": "Znowu?"
+          },
+          {
+            "text": "Jak zawsze."
+          }
+        ]
+      }
+    },
+    {
+      "type": "dialog",
+      "question": {
+        "name": "Alec",
+        "text": "James, dla Anglii."
       },
-	  	  	  {
-         type:"scene",
-         description:"Bond rzuca broń na ziemię, podnosi ręce nad głowę i podchodzi do Ourumowa."
+      "answer": {
+        "name": "Bond",
+        "options": [
+          {
+            "text": "Dla Anglii, Alec.",
+            "value": 1
+          },
+          {
+            "text": "Za królową, Alec."
+          },
+          {
+            "text": "Skopmy parę tyłków, Alec."
+          },
+          {
+            "text": "Jupikajej, Alec."
+          }
+        ]
+      }
+    },
+    {
+      "type": "scene",
+      "image": "episod1bondandtrevelyan",
+      "description": "Wchodzą do pomieszczenia wypełnionego zbiornikami zabójczego gazu."
+    },
+    {
+      "type": "scene",
+      "name": "Bond",
+      "description": "To jest zbyt proste."
+    },
+    {
+      "type": "dialog",
+      "question": {
+        "name": "Alec",
+        "text": " Połową wszystkiego jest szczęście."
       },
-	  	  	  {
-         type:"scene",
-         image: "episod1orumow",
-         name:"Ourumow",
-         description:"...trzy...dwa..."
+      "answer": {
+        "name": "Bond",
+        "options": [
+          {
+            "text": "A druga połowa?",
+            "value": 1
+          },
+          {
+            "text": "Szczęście jest nam pisane."
+          },
+          {
+            "text": "Ale szczecie to nie hazard, to ciężka praca, planowanie."
+          },
+          {
+            "text": "Aby osiągnąć szczęście, trzeba znać cierpienie."
+          }
+        ]
+      }
+    },
+    {
+      "type": "scene",
+      "name": "Alec",
+      "description": "Przeznaczenie!"
+    },
+    {
+      "type": "scene",
+      "description": "Pojawia się czerwone światło, syrena alarmu w fabryce. Mężczyźni zbiegają ze schodów."
+    },
+    {
+      "type": "dialog",
+      "question": {
+        "name": "Alec",
+        "text": "Ustaw czas na sześć minut!"
       },
-	  	  	  {
-         type:"scene",
-         image: "episod1alecdying",
-         name:"Alec",
-         description:"DlaAnglii,
-		James!!!"
+      "answer": {
+        "name": "Bond",
+        "options": [
+          {
+            "text": "Sześć minut, przyjęte.",
+            "value": 1
+          },
+          {
+            "text": "Sześć minut, bez odbioru."
+          },
+          {
+            "text": "Sześć minut jest dla mięczaków."
+          },
+          {
+            "text": "Sześć minut, nie za dużo?"
+          }
+        ]
+      }
+    },
+    {
+      "type": "scene",
+      "description": "Cyfrowy zegar nastawiony. James i Alec przebiegają między zbiornikami zakładając bomby. Sowiecki dowódca, Ourumow, pojawia się za pancerną szybą.",
+      "image": "episod1orumow"
+    },
+    {
+      "type": "scene",
+      "name": "Ourumow",
+      "description": "Ognia!!!"
+    },
+    {
+      "type": "dialog",
+      "question": {
+        "name": "Alec",
+        "text": "Zamykają! Ostatnie zamówienie!"
       },
-	  	  {
-         type:"scene",
-         description: "Pada strzał. Alec upada na ziemię. Żołnierze strzelają z karabinów. Bond cofa się ponownie za zbiorniki.",
-	     image: "episod1russiansoldiers"
-	},
-	{
-		type: "scene",
-		name: "Ourumow",
-		description: "To twoja ostatnia szansa! Wyjdź z rękami nad głową..."
-	},
-	{
-		type: "scene",
-		description: "Bond szybko chowa się za wózkiem."
-	},
-	{
-		type: "scene",
-		name: "Ourumow",
-		description: "Nie możesz wygrać."
-	},
-	{
-		type: "dialog",
-		question: {
-			text: "Rosjanie strzelają. Bond wskakuje na taśmociąg i strzela."
-		},
-		answer: {
-			name: "Bond",
-			options: [{
-				text: "Strzelam do krat nad głowami Rosjan."
-			},
-			{
-				text: "Strzelam do wszystkich Rosjan po kolei."
-			},
-			{
-				text: "Strzelam w kierunku pułkownika."
-			},
-			{
-				text: "Strzelam w sufit."
-			}]
-		}
-	},
-	{
-		type: "scene",
-		description: "Zbiorniki spadają na żołnierzy. Bond wydostaje się na zewnątrz."
-	},
-	{
-		type: "cutscene",
-		name: "GoldenEye 007 Physics of the airplane jump",
-		movie: "F2gdFK-2mY4"
-	}
-	]
+      "answer": {
+        "name": "",
+        "options": [
+          {
+            "text": "Kup mi piwo!",
+            "value": 1
+          },
+          {
+            "text": "Kup mi Martini!"
+          },
+          {
+            "text": "Kup mi małesgo pieska."
+          },
+          {
+            "text": "Martini, wstrząśnięte, nie zmieszane."
+          }
+        ]
+      }
+    },
+    {
+      "type": "scene",
+      "description": "Rosjanie strzelają, aż szyba pęka."
+    },
+    {
+      "type": "dialog",
+      "image": "episod1orumow",
+      "question": {
+        "name": "Ourumow",
+        "text": "Jestem pułkownik Ourumow. Wyjść z rękami nad głową!"
+      },
+      "answer": {
+        "name": "Bond",
+        "options": [
+          {
+            "text": "Oryginalne...",
+            "value": 1
+          },
+          {
+            "text": "Nie zgadzam się."
+          },
+          {
+            "text": "Dzień dobry pułkowniku."
+          },
+          {
+            "text": "Tak, proszę pana."
+          }
+        ]
+      }
+    },
+    {
+      "type": "scene",
+      "description": "Alec klęczy przed pułkownikiem, ten mierzy do niego z pistoletu. Trzydziestu żołnierzy ma na muszce Bonda.",
+      "image": "episod1alecdying"
+    },
+    {
+      "type": "scene",
+      "image": "episod1orumow",
+      "name": "Ourumow",
+      "description": "Wyjdź! Rzuć broń i podejdź. Powoli."
+    },
+    {
+      "type": "scene",
+      "image": "episod1alecdying",
+      "name": "Alec",
+      "description": "Skończ robotę, James! Wysadź ich do diabła!"
+    },
+    {
+      "type": "dialog",
+      "image": "episod1orumow",
+      "question": {
+        "name": "Ourumow",
+        "text": "Masz dziesięć sekund. Dziesięć... dziewięć... osiem..."
+      },
+      "answer": {
+        "name": "Bond",
+        "options": [
+          {
+            "text": "Zmieniam czas na trzy minuty.",
+            "value": 1
+          },
+          {
+            "text": "Zmieniam czas na sześć minut."
+          },
+          {
+            "text": "Zmieniam czas na pół godziny."
+          },
+          {
+            "text": "Wyłączam licznik."
+          }
+        ]
+      }
+    },
+    {
+      "type": "scene",
+      "image": "episod1orumow",
+      "name": "Ourumow",
+      "description": "...siedem...sześć...pięć...cztery..."
+    },
+    {
+      "type": "scene",
+      "description": "Bond rzuca broń na ziemię, podnosi ręce nad głowę i podchodzi do Ourumowa."
+    },
+    {
+      "type": "scene",
+      "image": "episod1orumow",
+      "name": "Ourumow",
+      "description": "...trzy...dwa..."
+    },
+    {
+      "type": "scene",
+      "image": "episod1alecdying",
+      "name": "Alec",
+      "description": "DlaAnglii,J ames!!!"
+    },
+    {
+      "type": "scene",
+      "description": "Pada strzał. Alec upada na ziemię. Żołnierze strzelają z karabinów. Bond cofa się ponownie za zbiorniki.",
+      "image": "episod1russiansoldiers"
+    },
+    {
+      "type": "scene",
+      "name": "Ourumow",
+      "description": "To twoja ostatnia szansa! Wyjdź z rękami nad głową..."
+    },
+    {
+      "type": "scene",
+      "description": "Bond szybko chowa się za wózkiem."
+    },
+    {
+      "type": "scene",
+      "name": "Ourumow",
+      "description": "Nie możesz wygrać."
+    },
+    {
+      "type": "dialog",
+      "question": {
+        "text": "Rosjanie strzelają. Bond wskakuje na taśmociąg i strzela."
+      },
+      "answer": {
+        "name": "Bond",
+        "options": [
+          {
+            "text": "Strzelam do krat nad głowami Rosjan.",
+            "value": 1
+          },
+          {
+            "text": "Strzelam do wszystkich Rosjan po kolei."
+          },
+          {
+            "text": "Strzelam w kierunku pułkownika."
+          },
+          {
+            "text": "Strzelam w sufit."
+          }
+        ]
+      }
+    },
+    {
+      "type": "scene",
+      "description": "Zbiorniki spadają na żołnierzy. Bond wydostaje się na zewnątrz."
+    },
+    {
+      "type": "cutscene",
+      "name": "GoldenEye 007 Physics of the airplane jump",
+      "movie": "F2gdFK-2mY4"
+    }
+  ]
 }
