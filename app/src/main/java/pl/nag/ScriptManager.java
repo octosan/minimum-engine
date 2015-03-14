@@ -28,17 +28,6 @@ public class ScriptManager {
         return getCurrentNode().getType().equals("dialog");
     }
 
-    public Answer getNextAnswer() {
-        while (currentIndex < script.getNodes().size() && !isDialog()) {
-            currentIndex++;
-        }
-        if (currentIndex == script.getNodes().size()) {
-            return null;
-        }
-        currentIndex++;
-        return script.getNodes().get(currentIndex - 1).getAnswer();
-    }
-
     public String getDescription() {
         return notNull(getCurrentNode().getDescription());
     }
@@ -105,5 +94,9 @@ public class ScriptManager {
         } else {
             return "finish";
         }
+    }
+
+    public Answer currentAnswer() {
+        return getCurrentNode().getAnswer();
     }
 }

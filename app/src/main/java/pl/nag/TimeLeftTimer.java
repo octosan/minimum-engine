@@ -10,7 +10,7 @@ import android.widget.ProgressBar;
 public class TimeLeftTimer extends CountDownTimer {
 
     private static final String TAG = TimeLeftTimer.class.getSimpleName();
-    private static final int MAX_SECONDS = 6;
+    private static final int MAX_SECONDS = 180;
     private static final int COUNT_DOWN_INTERVAL_MS = 50;
     private static final int ONE_SECOND_MS = 1000;
 

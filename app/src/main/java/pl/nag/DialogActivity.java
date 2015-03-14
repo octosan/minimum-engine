@@ -84,7 +84,7 @@ public class DialogActivity extends Activity {
     }
 
     private void shuffleButtons() {
-        Answer answer = scriptManager.getNextAnswer();
+        Answer answer = scriptManager.currentAnswer();
         Collections.shuffle(ANSWERS_IDS);
         for (int i = 0; i < ANSWERS_IDS.size(); i++) {
             Button button = (Button) findViewById(ANSWERS_IDS.get(i));
