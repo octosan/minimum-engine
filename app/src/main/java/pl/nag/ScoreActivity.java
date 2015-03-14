@@ -20,9 +20,11 @@ public class ScoreActivity extends Activity {
         setContentView(R.layout.activity_score);
         ButterKnife.inject(this);
 
-        // TODO
+        // Setup score
         Intent incomingIntent = this.getIntent();
-        setScore(0.75f);
+        double score = incomingIntent.getDoubleExtra(ExtraKey.POINTS.name(), 0.0);
+        int maximumScore = ((NakApp)getApplication()).getScriptManager().countNodesOfType("dialog");
+        setScore(maximumScore > 0 ? (float)score / maximumScore : 0.0f);
     }
 
     /**

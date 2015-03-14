@@ -87,6 +87,14 @@ public class ScriptManager {
             return null;
     }
 
+    public int countNodesOfType(String type) {
+        int count = 0;
+        for (Node n : script.getNodes()) {
+            count += type.equals(n.getType()) ? 1 : 0;
+        }
+        return count;
+    }
+
     public String getName() {
         return getCurrentNode().getName();
     }
