@@ -46,7 +46,7 @@ public class CutsceneActivity extends Activity {
         name.setText(scriptManager.getName());
         description.setText(scriptManager.getDescription());
         GuiHelper.updateImageViewByRaw(this, R.id.imageView, scriptManager.getImageName());
-        videoId = incomingIntent.getStringExtra(ExtraKey.VIDEO_ID.name());
+        videoId = scriptManager.getMovie();
         if (videoId == null || videoId.isEmpty()) {
             showMovie.setVisibility(View.GONE);
         }
@@ -62,13 +62,16 @@ public class CutsceneActivity extends Activity {
     }
 
     public void continueGame(View view) {
+        int nextIndex = index + 1;
         Intent nextIntent = new Intent(this, ((NakApp) getApplication()).getNextActivityClass());
-        nextIntent.putExtra(ExtraKey.INDEX.name(), index + 1);
+        nextIntent.putExtra(ExtraKey.INDEX.name(), nextIndex);
+        // pass the image
         nextIntent.putExtra(ExtraKey.IMAGE.name(), image);
-        nextIntent.putExtra(ExtraKey.VIDEO_ID.name(), scriptManager.getMovie());
+        // pass the points
         nextIntent.putExtra(ExtraKey.POINTS.name(), getIntent().getDoubleExtra(ExtraKey.POINTS.name(), 0.0f));
         nextIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         Log.i("Navi", "Going to index " + (index + 1));
+
         startActivity(nextIntent);
     }
 

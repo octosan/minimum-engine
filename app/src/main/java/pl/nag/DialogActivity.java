@@ -57,7 +57,6 @@ public class DialogActivity extends Activity {
         episode = incomingIntent.getIntExtra(ExtraKey.EPISODE.name(), 0);
         image = incomingIntent.getStringExtra(ExtraKey.IMAGE.name());
 
-
         scriptManager = ((NakApp)getApplication()).getScriptManager();
         scriptManager.setNodeIndex(index);
 
@@ -114,15 +113,15 @@ public class DialogActivity extends Activity {
         // TODO: (mrvoid) Is this needed?
         timeLeftTimer.cancel();
 
+        int nextIndex = index + 1;
         Intent nextIntent;
         nextIntent = new Intent(this, ((NakApp) getApplication()).getNextActivityClass());
         nextIntent.putExtra(ExtraKey.IMAGE.name(), image);
-        nextIntent.putExtra(ExtraKey.VIDEO_ID.name(), scriptManager.getMovie());
         nextIntent.putExtra(ExtraKey.POINTS.name(), points);
-        nextIntent.putExtra(ExtraKey.INDEX.name(), index + 1);
+        nextIntent.putExtra(ExtraKey.INDEX.name(), nextIndex);
         nextIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
 
-        Log.i("Navi", "Going to index " + (index + 1));
+        Log.i("Navi", "Going to index " + nextIndex);
         startActivity(nextIntent);
     }
 
