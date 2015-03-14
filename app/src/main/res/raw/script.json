@@ -28,6 +28,11 @@
       }
     },
     {
+      "type": "cutscene",
+      "name": "Goldeneye opening [HD]",
+      "movie": "mSvuHSqqGSw"
+    },
+    {
       "type": "scene",
       "name": "Fabryka Broni Chemicznej, Archangel, ZSRR",
       "image": "filmdam.jpg",
@@ -58,11 +63,6 @@
           }
         ]
       }
-    },
-    {
-      "type": "cutscene",
-      "name": "Goldeneye opening [HD]",
-      "movie": "mSvuHSqqGSw"
     },
     {
       "type": "dialog",

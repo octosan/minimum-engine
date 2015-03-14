@@ -23,6 +23,11 @@ public class CutsceneActivity extends Activity {
     private int index;
     private String videoId;
 
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        continueGame(null);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -10,16 +10,20 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".DialogActivity"
-            android:label="@string/title_activity_main">
+            android:label="@string/title_activity_main"
+            android:screenOrientation="landscape"
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
-            android:name=".CutsceneActivity" />
+            android:name=".CutsceneActivity"
+            android:screenOrientation="landscape"/>
         <activity
-            android:name=".ScoreActivity" />
+            android:name=".ScoreActivity"
+            android:screenOrientation="landscape"/>
     </application>
 
 </manifest>

@@ -5,16 +5,21 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.RatingBar;
+import android.widget.TextView;
+
+import butterknife.ButterKnife;
+import butterknife.InjectView;
 
 public class ScoreActivity extends Activity {
 
-    private RatingBar scoreBar;
+    @InjectView(R.id.description)
+    RatingBar scoreBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_score);
-        scoreBar = (RatingBar) findViewById(R.id.scoreBar);
+        ButterKnife.inject(this);
 
         // TODO
         Intent incomingIntent = this.getIntent();
