@@ -2,8 +2,6 @@ package pl.nag;
 
 import android.app.Application;
 
-import pl.nag.model.ScriptManager;
-
 /**
  * Controller
  */

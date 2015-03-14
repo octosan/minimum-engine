@@ -28,7 +28,7 @@
         android:stepSize="1" />
 
     <Button
-        android:id="@+id/continueGame"
+        android:id="@+id/showMovie"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="continueGame"
@@ -44,7 +44,7 @@
         android:layout_height="wrap_content"
         android:onClick="replayGame"
         android:text="Play again"
-        android:layout_below="@+id/continueGame"
+        android:layout_below="@+id/showMovie"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 

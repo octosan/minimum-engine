@@ -1,11 +1,13 @@
-package pl.nag.model;
+package pl.nag;
 
 import android.content.Context;
 
 import java.io.UnsupportedEncodingException;
 
-import pl.nag.GuiHelper;
-import pl.nag.Parser;
+import pl.nag.model.Answer;
+import pl.nag.model.Node;
+import pl.nag.model.Question;
+import pl.nag.model.Script;
 
 public class ScriptManager {
 
@@ -66,7 +68,7 @@ public class ScriptManager {
     }
 
     public String getNextNodeType() {
-        currentIndex ++;
+        currentIndex++;
         Node node = null;
         if (script.getNodes().size() > currentIndex)
             node = getCurrentNode();

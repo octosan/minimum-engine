@@ -1,11 +1,9 @@
 package pl.nag;
 
 import android.app.Activity;
-import android.app.Dialog;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -15,7 +13,6 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.io.InputStream;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
@@ -23,7 +20,6 @@ import java.util.List;
 import java.util.Map;
 
 import pl.nag.model.Answer;
-import pl.nag.model.ScriptManager;
 
 public class DialogActivity extends Activity {
     private Map<Integer, Double> pointsMap = new HashMap<Integer, Double>();
@@ -73,7 +69,6 @@ public class DialogActivity extends Activity {
     }
 
 
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);
@@ -90,7 +85,7 @@ public class DialogActivity extends Activity {
         Intent nextIntent;
 
         if (pointsMap.containsKey(view.getId())) {
-            nextIntent = new Intent(this, ((NakApp)getApplication()).whatsNext());
+            nextIntent = new Intent(this, ((NakApp) getApplication()).whatsNext());
             nextIntent.putExtra(ExtraKey.VIDEOID.name(), "mSvuHSqqGSw"); // TODO
             nextIntent.putExtra(ExtraKey.POINTS.name(), points + pointsMap.get(view.getId()));
             nextIntent.putExtra(ExtraKey.INDEX.name(), index + 1);
