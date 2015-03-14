@@ -1,7 +1,17 @@
 package pl.nag.model;
 
-/**
- * Created by v-robwan on 14/03/2015.
- */
-public class GameState {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class GameState implements Parcelable {
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+
+    }
 }

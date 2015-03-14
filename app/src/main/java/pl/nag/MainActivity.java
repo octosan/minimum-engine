@@ -7,23 +7,20 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.animation.AnimationSet;
 import android.widget.Button;
 
 import java.io.UnsupportedEncodingException;
-import java.util.Random;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 import pl.nag.model.Answer;
 import pl.nag.model.Script;
 import pl.nag.model.ScriptQuestionsTraverser;
 
 public class MainActivity extends Activity {
-    public static String INTENT_INDEX = "INDEX";
-    public static String INTENT_POINTS = "POINTS";
-
     public static Script script = null;
     public static ScriptQuestionsTraverser traverser;
-
 
     private int points;
     private int index;
@@ -61,8 +58,10 @@ public class MainActivity extends Activity {
 
         Answer answer = traverser.getNextAnswer();
 
+        List<Button> buttons = Arrays.asList(b);
+        Collections.shuffle(buttons);
         for (int i = 0; i < buttonCount; i++) {
-            b[i].setText(answer.getOptions().get(i).getText());
+            buttons.get(i).setText(answer.getOptions().get(i).getText());
         }
     }
 
@@ -109,8 +108,8 @@ public class MainActivity extends Activity {
                 nextIntent = null;
         }
 
-        nextIntent.putExtra("POINTS", points);
-        nextIntent.putExtra("INDEX", index+1);
+        nextIntent.putExtra(ExtraKey.POINTS.name(), points);
+        nextIntent.putExtra(ExtraKey.INDEX.name(), index+1);
         startActivity(nextIntent);
     }
 }
