@@ -11,5 +11,9 @@
         <item name="android:background" >@drawable/buttonshape</item>
         <item name="android:gravity">center</item>
     </style>
+    <style name="secondary" >
+        <item name="android:textColor">#777</item>
+    </style>
+
 
 </resources>

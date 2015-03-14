@@ -3,9 +3,9 @@ package pl.nag;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import butterknife.ButterKnife;
@@ -15,7 +15,7 @@ public class CutsceneActivity extends Activity {
 
     @InjectView(R.id.name)
     TextView name;
-    @InjectView(R.id.description)
+    @InjectView(R.id.episode1)
     TextView description;
     @InjectView(R.id.showMovie)
     Button showMovie;
@@ -58,6 +58,7 @@ public class CutsceneActivity extends Activity {
         Intent nextIntent = new Intent(this, ((NakApp) getApplication()).getNextActivityClass());
         nextIntent.putExtra(ExtraKey.INDEX.name(), index + 1);
         nextIntent.putExtra(ExtraKey.POINTS.name(), getIntent().getDoubleExtra(ExtraKey.POINTS.name(), 0.0f));
+        Log.i("Navi", "Going to index " + (index + 1));
         startActivity(nextIntent);
     }
 

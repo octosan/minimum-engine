@@ -1,6 +1,7 @@
 package pl.nag;
 
 import android.app.Application;
+import android.util.Log;
 
 /**
  * Controller
@@ -24,20 +25,24 @@ public class NakApp extends Application {
     }
 
     public Class getNextActivityClass() {
-        return getNextNodeType(scriptManager.getNextNodeType());
+        return getNodeClass(scriptManager.getNextNodeType());
     }
 
-    private Class getNextNodeType(String nextNodeType) {
-        if (nextNodeType != null) {
-            if (nextNodeType.equals("scene")) {
-                return CutsceneActivity.class;
-            }
-            if (nextNodeType.equals("cutscene")) {
-                return CutsceneActivity.class;
-            }
-            if (nextNodeType.equals("dialog")) {
-                return DialogActivity.class;
-            }
+
+    public Class getFirstActivityClass() {
+        return getNodeClass(scriptManager.getFirstNodeType());
+    }
+
+    private Class getNodeClass(String nextNodeType) {
+        Log.d("Navi", "Using node type: " + nextNodeType);
+        if (nextNodeType.equals("scene")) {
+            return CutsceneActivity.class;
+        }
+        if (nextNodeType.equals("cutscene")) {
+            return CutsceneActivity.class;
+        }
+        if (nextNodeType.equals("dialog")) {
+            return DialogActivity.class;
         }
         return ScoreActivity.class;
     }

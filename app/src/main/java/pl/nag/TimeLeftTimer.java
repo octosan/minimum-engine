@@ -10,8 +10,8 @@ import android.widget.ProgressBar;
 public class TimeLeftTimer extends CountDownTimer {
 
     private static final String TAG = TimeLeftTimer.class.getSimpleName();
-    private static final int MAX_SECONDS = 5;
-    private static final int COUNT_DOWN_INTERVAL_MS = 200;
+    private static final int MAX_SECONDS = 6;
+    private static final int COUNT_DOWN_INTERVAL_MS = 1000;
     private static final int ONE_SECOND_MS = 1000;
 
     private ProgressBar progressBar;
@@ -30,7 +30,7 @@ public class TimeLeftTimer extends CountDownTimer {
     @Override
     public void onTick(long millisUntilFinished) {
         int progress = (int) ((getMillisInFuture() - millisUntilFinished) / 10 / MAX_SECONDS);
-        Log.d(TAG, "progress" + progress + " millisUntilFinished=" + millisUntilFinished);
+        //Log.d(TAG, "progress" + progress + " millisUntilFinished=" + millisUntilFinished);
         progressBar.setProgress(100 - progress);
     }
 

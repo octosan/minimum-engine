@@ -5,14 +5,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.RatingBar;
-import android.widget.TextView;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 
 public class ScoreActivity extends Activity {
 
-    @InjectView(R.id.description)
+    @InjectView(R.id.episode1)
     RatingBar scoreBar;
 
     @Override
@@ -48,6 +47,6 @@ public class ScoreActivity extends Activity {
 
 
     private Intent getMainActivity() {
-        return new Intent(this, DialogActivity.class);
+        return new Intent(this, MenuActivity.class);
     }
 }

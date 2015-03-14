@@ -28,7 +28,7 @@ public class DialogActivity extends Activity {
     private static final List<Integer> ANSWERS_IDS = Arrays.asList(R.id.answer0, R.id.answer1, R.id.answer2, R.id.answer3);
     public static ScriptManager scriptManager = null;
 
-    @InjectView(R.id.description)
+    @InjectView(R.id.episode1)
     TextView description;
     @InjectView(R.id.question)
     TextView question;
@@ -70,24 +70,22 @@ public class DialogActivity extends Activity {
         timeLeftTimer = new TimeLeftTimer(timeLeftBar, new OnFinishCallback() {
             @Override
             public void onFinish() {
-                for (Button b : buttons) {
-                    if (b.getId() == R.id.answer0) {
-                        onClick(b);
-                    } else {
-                        b.setEnabled(false);
-                    }
-                }
+                continueToNextNode();
             }
         }).start();
 
         // Shuffling of buttons
+        shuffleButtons();
+    }
+
+    private void shuffleButtons() {
         Answer answer = scriptManager.getNextAnswer();
         Collections.shuffle(ANSWERS_IDS);
         for (int i = 0; i < ANSWERS_IDS.size(); i++) {
             Button button = (Button) findViewById(ANSWERS_IDS.get(i));
-            if (answer != null && answer.getOptions() != null && answer.getOptions().get(i) != null) {
-                button.setText(answer.getOptions().get(i).getText());
-            }
+            //if (answer != null && answer.getOptions() != null && answer.getOptions().get(i) != null) {
+            button.setText(answer.getOptions().get(i).getText());
+            //}
             pointsMap.put(ANSWERS_IDS.get(i), answer.getOptions().get(i).getValue());
             buttons.add(button);
         }
@@ -106,18 +104,31 @@ public class DialogActivity extends Activity {
         return id == R.id.action_settings ? true : super.onOptionsItemSelected(item);
     }
 
-    public void onClick(View view) {
+    private void continueToNextNode() {
+        // TODO: (mrvoid) Is this needed?
+        timeLeftTimer.cancel();
+
         Intent nextIntent;
+        nextIntent = new Intent(this, ((NakApp) getApplication()).getNextActivityClass());
+
+        nextIntent.putExtra(ExtraKey.VIDEO_ID.name(), scriptManager.getMovie());
+        nextIntent.putExtra(ExtraKey.POINTS.name(), points);
+        nextIntent.putExtra(ExtraKey.INDEX.name(), index + 1);
+
+        nextIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+
+        Log.i("Navi", "Going to index " + (index + 1));
+        startActivity(nextIntent);
+    }
+
+    public void onClick(View view) {
         if (pointsMap.containsKey(view.getId())) {
-            nextIntent = new Intent(this, ((NakApp) getApplication()).getNextActivityClass());
-            nextIntent.putExtra(ExtraKey.VIDEO_ID.name(), scriptManager.getMovie());
-            nextIntent.putExtra(ExtraKey.POINTS.name(), points + pointsMap.get(view.getId()));
-            nextIntent.putExtra(ExtraKey.INDEX.name(), index + 1);
+            points += pointsMap.get(view.getId());
         } else {
             return;
         }
-        nextIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        startActivity(nextIntent);
+
+        continueToNextNode();
     }
 
     private void updateImage(String imageName) {

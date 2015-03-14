@@ -69,16 +69,15 @@ public class ScriptManager {
     }
 
     public String getNextNodeType() {
-        currentIndex++;
         Node node = null;
-        if (script.getNodes().size() > currentIndex)
-            node = getCurrentNode();
-        currentIndex--;
-
-        if (node != null)
-            return node.getType();
-        else
-            return null;
+        int nextIndex = currentIndex + 1;
+        if (script.getNodes().size() > nextIndex) {
+            return script.getNodes().get(nextIndex).getType();
+        }
+        else {
+            // TODO: (mrvoid) move to enum...
+            return "finish";
+        }
     }
 
     public String getMovie() {
@@ -87,5 +86,13 @@ public class ScriptManager {
 
     public String getName() {
         return getCurrentNode().getName();
+    }
+
+    public String getFirstNodeType() {
+        if (script.getNodes().size() > 0) {
+            return script.getNodes().get(0).getType();
+        } else {
+            return "finish";
+        }
     }
 }
