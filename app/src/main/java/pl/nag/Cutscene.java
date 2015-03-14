@@ -2,7 +2,6 @@ package pl.nag;
 
 import android.app.Activity;
 import android.content.ActivityNotFoundException;
-import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 
@@ -11,20 +10,21 @@ import android.net.Uri;
  */
 public class Cutscene {
 
-    private Activity context;
+    private Activity activity;
 
     public Cutscene(Activity activity) {
-        this.context = activity;
+        this.activity = activity;
     }
 
     public void startIntent(String videoId) {
         try {
+            GuiHelper.toast(activity, "startIntent: " + videoId);
             Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("vnd.youtube:" + videoId));
-            context.startActivityForResult(intent, 0);
+            activity.startActivityForResult(intent, 0);
         } catch (ActivityNotFoundException ex) {
             Intent intent = new Intent(Intent.ACTION_VIEW,
                     Uri.parse(toUrl(videoId)));
-            context.startActivityForResult(intent, 0);
+            activity.startActivityForResult(intent, 0);
         }
     }
 
