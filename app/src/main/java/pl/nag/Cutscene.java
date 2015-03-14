@@ -18,7 +18,6 @@ public class Cutscene {
 
     public void startIntent(String videoId) {
         try {
-            GuiHelper.toast(activity, "startIntent: " + videoId);
             Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("vnd.youtube:" + videoId));
             activity.startActivityForResult(intent, 0);
         } catch (ActivityNotFoundException ex) {
