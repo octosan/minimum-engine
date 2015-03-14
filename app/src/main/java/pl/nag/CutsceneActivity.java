@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.view.View;
 
 public class CutsceneActivity extends Activity {
-
     private int index;
 
     @Override
@@ -16,6 +15,8 @@ public class CutsceneActivity extends Activity {
 
         Intent incomingIntent = this.getIntent();
         index = incomingIntent.getIntExtra(ExtraKey.INDEX.name(), 0);
+        ((NakApp)getApplication()).getScriptManager().setNodeIndex(index);
+
         String videoId = incomingIntent.getStringExtra(ExtraKey.VIDEOID.name());
         if (videoId != null && !videoId.isEmpty()) {
             new Cutscene(this).startIntent(videoId);
@@ -23,9 +24,9 @@ public class CutsceneActivity extends Activity {
     }
 
     public void continueGame(View view) {
-        Intent nextIntent = new Intent(this, DialogActivity.class);
+        Intent nextIntent = new Intent(this, ((NakApp)getApplication()).whatsNext());
         nextIntent.putExtra(ExtraKey.INDEX.name(), index + 1);
-        // TODO
+        nextIntent.putExtra(ExtraKey.POINTS.name(), getIntent().getDoubleExtra(ExtraKey.POINTS.name(), 0.0f));
         startActivity(nextIntent);
     }
 

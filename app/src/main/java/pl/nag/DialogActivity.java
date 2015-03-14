@@ -1,6 +1,7 @@
 package pl.nag;
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -26,14 +27,11 @@ import pl.nag.model.ScriptManager;
 
 public class DialogActivity extends Activity {
     private Map<Integer, Double> pointsMap = new HashMap<Integer, Double>();
-    private Class nextNodeType;
-
     public static ScriptManager scriptManager = null;
 
     private double points;
     private int index;
     private int episode;
-    private String movie;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,8 +49,6 @@ public class DialogActivity extends Activity {
         }
         scriptManager.setNodeIndex(index);
 
-        nextNodeType = getNextNodeType(scriptManager.getNextNodeType());
-
         Log.d("StateLog", "Application index: " + index);
         Log.d("StateLog", "Points: " + points);
 
@@ -62,8 +58,6 @@ public class DialogActivity extends Activity {
         TextView question = (TextView) findViewById(R.id.question);
         question.setText(scriptManager.getQuestion());
         updateImage(scriptManager.getImageName());
-        movie = scriptManager.getMovie();
-
 
         // Shuffling of buttons
         List<Integer> buttons = Arrays.asList(R.id.answer0, R.id.answer1, R.id.answer2, R.id.answer3);
@@ -78,20 +72,7 @@ public class DialogActivity extends Activity {
         }
     }
 
-    private Class getNextNodeType(String nextNodeType) {
-        if (nextNodeType != null) {
-            if (nextNodeType.equals("scene")) {
-                return DialogActivity.class;//TODO
-            }
-            if (nextNodeType.equals("cutscene")) {
-                return CutsceneActivity.class;
-            }
-            if (nextNodeType.equals("dialog")) {
-                return DialogActivity.class;
-            }
-        }
-        return null;
-    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -109,8 +90,8 @@ public class DialogActivity extends Activity {
         Intent nextIntent;
 
         if (pointsMap.containsKey(view.getId())) {
-            nextIntent = new Intent(this, nextNodeType);
-            nextIntent.putExtra(ExtraKey.VIDEOID.name(), movie); // TODO
+            nextIntent = new Intent(this, ((NakApp)getApplication()).whatsNext());
+            nextIntent.putExtra(ExtraKey.VIDEOID.name(), "mSvuHSqqGSw"); // TODO
             nextIntent.putExtra(ExtraKey.POINTS.name(), points + pointsMap.get(view.getId()));
             nextIntent.putExtra(ExtraKey.INDEX.name(), index + 1);
         } else {
