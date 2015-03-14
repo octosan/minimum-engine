@@ -102,7 +102,8 @@ public class MainActivity extends Activity {
                 nextIntent = new Intent(this, MainActivity.class);
                 break;
             case (R.id.answer3):
-                nextIntent = new Intent(this, MainActivity.class);
+                nextIntent = new Intent(this, CutsceneActivity.class);
+                nextIntent.putExtra(ExtraKey.VIDEOID.name(), "mSvuHSqqGSw"); // TODO
                 break;
             default:
                 nextIntent = null;
