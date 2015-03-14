@@ -113,6 +113,8 @@ public class DialogActivity extends Activity {
             nextIntent.putExtra(ExtraKey.VIDEO_ID.name(), scriptManager.getMovie());
             nextIntent.putExtra(ExtraKey.POINTS.name(), points + pointsMap.get(view.getId()));
             nextIntent.putExtra(ExtraKey.INDEX.name(), index + 1);
+
+            Log.i("Navi", "Going to index " + (index + 1));
         } else {
             return;
         }
