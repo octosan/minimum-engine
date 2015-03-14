@@ -40,7 +40,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="showMovie"
-        android:text="show movie"
+        android:text="odtwórz film"
         android:layout_below="@+id/episode1"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
@@ -50,7 +50,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="continueGame"
-        android:text="continue"
+        android:text="pomiń"
         android:layout_below="@+id/episode1"
         android:layout_toRightOf="@+id/showMovie"
         android:layout_toEndOf="@+id/showMovie" />
