@@ -12,8 +12,8 @@ public class Option {
         this.text = text;
     }
 
-    public String getValue() {
-        return value;
+    public double getValue() {
+        return Double.parseDouble(value);
     }
 
     public void setValue(String value) {

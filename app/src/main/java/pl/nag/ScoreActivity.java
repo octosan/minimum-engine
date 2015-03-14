@@ -3,11 +3,7 @@ package pl.nag;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.RatingBar;
 
 public class ScoreActivity extends Activity {
@@ -47,6 +43,6 @@ public class ScoreActivity extends Activity {
 
 
     private Intent getMainActivity() {
-        return new Intent(this, MainActivity.class);
+        return new Intent(this, DialogActivity.class);
     }
 }

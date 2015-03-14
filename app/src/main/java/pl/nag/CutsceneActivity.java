@@ -23,7 +23,7 @@ public class CutsceneActivity extends Activity {
     }
 
     public void continueGame(View view) {
-        Intent nextIntent = new Intent(this, MainActivity.class);
+        Intent nextIntent = new Intent(this, DialogActivity.class);
         nextIntent.putExtra(ExtraKey.INDEX.name(), index + 1);
         // TODO
         startActivity(nextIntent);

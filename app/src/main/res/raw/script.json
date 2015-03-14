@@ -1,7 +1,31 @@
-
 {
   "name": "Epizod 1",
   "nodes": [
+    {
+      "type": "dialog",
+      "question": {
+        "name": "Zenek",
+        "text": "W takim razie otoczymy ich od srodka!"
+      },
+      "answer": {
+        "name": "Bond",
+        "options": [
+          {
+            "text": "Do dziela.",
+            "value": 1
+          },
+          {
+            "text": "Za królowa."
+          },
+          {
+            "text": "Zapomnialem dodać, że mam pistolet."
+          },
+          {
+            "text": "Scrabble."
+          }
+        ]
+      }
+    },
     {
       "type": "cutscene",
       "name": "Goldeneye opening [HD]",
