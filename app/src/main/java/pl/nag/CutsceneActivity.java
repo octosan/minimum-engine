@@ -53,6 +53,7 @@ public class CutsceneActivity extends Activity {
         if(scriptManager.getImageName() != null){
             image = scriptManager.getImageName();
         }
+        GuiHelper.updateImageViewByRaw(this, R.id.imageView, image);
     }
 
     public void showMovie(View view) {

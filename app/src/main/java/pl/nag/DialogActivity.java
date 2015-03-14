@@ -70,7 +70,7 @@ public class DialogActivity extends Activity {
         if(scriptManager.getImageName() != null){
             image = scriptManager.getImageName();
         }
-        updateImage(image);
+        GuiHelper.updateImageViewByRaw(this, R.id.imageView, image);
 
         timeLeftTimer = new TimeLeftTimer(timeLeftBar, new OnFinishCallback() {
             @Override
@@ -134,10 +134,6 @@ public class DialogActivity extends Activity {
         }
 
         continueToNextNode();
-    }
-
-    private void updateImage(String imageName) {
-        GuiHelper.updateImageViewByRaw(this, R.id.imageView, imageName);
     }
 
     @Override
