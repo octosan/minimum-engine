@@ -116,6 +116,7 @@ public class DialogActivity extends Activity {
 
         Intent nextIntent;
         nextIntent = new Intent(this, ((NakApp) getApplication()).getNextActivityClass());
+        nextIntent.putExtra(ExtraKey.IMAGE.name(), image);
         nextIntent.putExtra(ExtraKey.VIDEO_ID.name(), scriptManager.getMovie());
         nextIntent.putExtra(ExtraKey.POINTS.name(), points);
         nextIntent.putExtra(ExtraKey.INDEX.name(), index + 1);

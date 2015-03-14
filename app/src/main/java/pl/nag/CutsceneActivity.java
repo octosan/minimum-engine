@@ -22,6 +22,8 @@ public class CutsceneActivity extends Activity {
 
     private int index;
     private String videoId;
+    private String image;
+    private ScriptManager scriptManager;
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -37,7 +39,8 @@ public class CutsceneActivity extends Activity {
 
         Intent incomingIntent = this.getIntent();
         index = incomingIntent.getIntExtra(ExtraKey.INDEX.name(), 0);
-        ScriptManager scriptManager = ((NakApp) getApplication()).getScriptManager();
+        image = incomingIntent.getStringExtra(ExtraKey.IMAGE.name());
+        scriptManager = ((NakApp) getApplication()).getScriptManager();
         scriptManager.setNodeIndex(index);
 
         name.setText(scriptManager.getName());
@@ -46,6 +49,9 @@ public class CutsceneActivity extends Activity {
         videoId = incomingIntent.getStringExtra(ExtraKey.VIDEO_ID.name());
         if (videoId == null || videoId.isEmpty()) {
             showMovie.setVisibility(View.GONE);
+        }
+        if(scriptManager.getImageName() != null){
+            image = scriptManager.getImageName();
         }
     }
 
@@ -57,6 +63,8 @@ public class CutsceneActivity extends Activity {
     public void continueGame(View view) {
         Intent nextIntent = new Intent(this, ((NakApp) getApplication()).getNextActivityClass());
         nextIntent.putExtra(ExtraKey.INDEX.name(), index + 1);
+        nextIntent.putExtra(ExtraKey.IMAGE.name(), image);
+        nextIntent.putExtra(ExtraKey.VIDEO_ID.name(), scriptManager.getMovie());
         nextIntent.putExtra(ExtraKey.POINTS.name(), getIntent().getDoubleExtra(ExtraKey.POINTS.name(), 0.0f));
         Log.i("Navi", "Going to index " + (index + 1));
         startActivity(nextIntent);
