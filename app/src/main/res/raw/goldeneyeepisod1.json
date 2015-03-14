@@ -8,7 +8,7 @@
 	{
 		type: "scene",
 		name: "Fabryka Broni Chemicznej, Archangel, ZSRR",
-		image: "https://subjectnavigator.files.wordpress.com/2008/11/filmdam.jpg",
+		image: "episod1filmdam",
 		description: "Bond wchodzi do ciemnego pomieszczenia. Ktoś celuje do niego z pistoletu."
 	},
 	{
@@ -36,7 +36,7 @@
 	{
 		type: "scene",
 		name: "TODO",
-		image: "http://images2.fanpop.com/image/photos/12400000/Alec-Trevelyan-Goldeneye-sean-bean-12418798-917-554.jpg",
+		image: "episod1alecseanbean",
 		description: "Alec Trevelyan, 006, wchodzi w zasięg światła."
 	},
 	{
@@ -108,7 +108,7 @@
 	{
 		type: "scene",
 		name: "TODO",
-		image: "http: //vignette3.wikia.nocookie.net/jamesbond/images/8/82/Bond_and_Trevelyan.jpg/revision/latest?cb=20120815203815",
+		image: "episod1bondandtrevelyan",
 		description: "Wchodzą do pomieszczenia wypełnionego zbiornikami zabójczego gazu."
 	},
 	{
@@ -174,7 +174,7 @@
 		type: "scene",
 		name: "TODO",
 		description: "Cyfrowy zegar nastawiony. James i Alec przebiegają między zbiornikami zakładając bomby. Sowiecki dowódca, Ourumow, pojawia się za szybą z plexi.",
-		image: "http: //2.bp.blogspot.com/-JedaXQV1MoA/TnfqisD9e4I/AAAAAAAABjw/JEkYJp3bXGo/s1600/vlcsnap-2011-09-19-19h50m43s153.png"
+		image: "episod1orumow"
 	},
 	{
 		type: "scene",
@@ -234,7 +234,7 @@
 		type: "scene",
 		name: "TODO",
 		description: "Alec klęczy przed pułkownikiem, ten mierzy do niego z pistoletu. Trzydziestu żołnierzy ma na muszce Bonda.",
-		image: "https://bplusmovieblog.files.wordpress.com/2012/11/goldeneye-61.png?w=590"
+		image: "episod1alecdying"
       },
 	  {
          type:"scene",
@@ -287,7 +287,7 @@
          type:"scene",
          name:"TODO",
          description: "Pada strzał. Alec upada na ziemię. Żołnierze strzelają z karabinów. Bond cofa się ponownie za zbiorniki.",
-	     image: "http: //www.filmchronicles.com/wp-content/uploads/2012/05/goldeneye026.jpg"
+	     image: "episod1russiansoldiers"
 	},
 	{
 		type: "scene",
