@@ -5,8 +5,20 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import butterknife.ButterKnife;
+import butterknife.InjectView;
 
 public class CutsceneActivity extends Activity {
+
+    @InjectView(R.id.name)
+    TextView name;
+    @InjectView(R.id.description)
+    TextView description;
+    @InjectView(R.id.showMovie)
+    Button showMovie;
 
     private int index;
     private String videoId;
@@ -16,14 +28,18 @@ public class CutsceneActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cutscene);
+        ButterKnife.inject(this);
 
         Intent incomingIntent = this.getIntent();
         index = incomingIntent.getIntExtra(ExtraKey.INDEX.name(), 0);
-        ((NakApp) getApplication()).getScriptManager().setNodeIndex(index);
+        ScriptManager scriptManager = ((NakApp) getApplication()).getScriptManager();
+        scriptManager.setNodeIndex(index);
 
-        videoId = incomingIntent.getStringExtra(ExtraKey.VIDEOID.name());
+        name.setText(scriptManager.getName());
+        description.setText(scriptManager.getDescription());
+        GuiHelper.updateImageViewByRaw(this, R.id.imageView, scriptManager.getImageName());
+        videoId = incomingIntent.getStringExtra(ExtraKey.VIDEO_ID.name());
         if (videoId == null || videoId.isEmpty()) {
-            Button showMovie = (Button) findViewById(R.id.showMovie);
             showMovie.setVisibility(View.GONE);
         }
     }

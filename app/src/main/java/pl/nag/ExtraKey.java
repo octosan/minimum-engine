@@ -4,5 +4,5 @@ package pl.nag;
  * @author ts
  */
 public enum ExtraKey {
-    INDEX, POINTS, EPISODE, VIDEOID
+    INDEX, POINTS, EPISODE, VIDEO_ID
 }

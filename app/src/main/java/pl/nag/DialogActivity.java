@@ -22,12 +22,21 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import butterknife.ButterKnife;
+import butterknife.InjectView;
 import pl.nag.model.Answer;
 
 public class DialogActivity extends Activity {
 
     private static final List<Integer> ANSWERS_IDS = Arrays.asList(R.id.answer0, R.id.answer1, R.id.answer2, R.id.answer3);
     public static ScriptManager scriptManager = null;
+
+    @InjectView(R.id.description)
+    TextView description;
+    @InjectView(R.id.question)
+    TextView question;
+    @InjectView(R.id.timeLeft)
+    ProgressBar timeLeftBar;
 
     private Map<Integer, Double> pointsMap = new HashMap<Integer, Double>();
     private double points;
@@ -40,6 +49,7 @@ public class DialogActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dialog);
+        ButterKnife.inject(this);
 
         Intent incomingIntent = this.getIntent();
 
@@ -56,13 +66,10 @@ public class DialogActivity extends Activity {
         Log.d("StateLog", "Points: " + points);
 
         // View setup
-        TextView description = (TextView) findViewById(R.id.description);
         description.setText(scriptManager.getDescription());
-        TextView question = (TextView) findViewById(R.id.question);
         question.setText(scriptManager.getQuestion());
         updateImage(scriptManager.getImageName());
 
-        ProgressBar timeLeftBar = (ProgressBar) findViewById(R.id.timeLeft);
         timeLeftTimer = new TimeLeftTimer(timeLeftBar, new OnFinishCallback() {
             @Override
             public void onFinish() {
@@ -106,7 +113,7 @@ public class DialogActivity extends Activity {
         Intent nextIntent;
         if (pointsMap.containsKey(view.getId())) {
             nextIntent = new Intent(this, ((NakApp) getApplication()).getNextActivityClass());
-            nextIntent.putExtra(ExtraKey.VIDEOID.name(), scriptManager.getMovie());
+            nextIntent.putExtra(ExtraKey.VIDEO_ID.name(), scriptManager.getMovie());
             nextIntent.putExtra(ExtraKey.POINTS.name(), points + pointsMap.get(view.getId()));
             nextIntent.putExtra(ExtraKey.INDEX.name(), index + 1);
         } else {
@@ -117,15 +124,7 @@ public class DialogActivity extends Activity {
     }
 
     private void updateImage(String imageName) {
-        try {
-            Bitmap bitmap = new ImageHelper(this).getRawByFileName(imageName);
-            if (bitmap != null) {
-                ImageView imageView = (ImageView) findViewById(R.id.imageView);
-                imageView.setImageBitmap(bitmap);
-            }
-        } catch (Resources.NotFoundException e) {
-            GuiHelper.toast(this, imageName + " Not Found");
-        }
+        GuiHelper.updateImageViewByRaw(this, R.id.imageView, imageName);
     }
 
     @Override
