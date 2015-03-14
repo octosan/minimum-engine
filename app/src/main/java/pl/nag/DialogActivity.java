@@ -58,9 +58,7 @@ public class DialogActivity extends Activity {
         image = incomingIntent.getStringExtra(ExtraKey.IMAGE.name());
 
 
-        if (scriptManager == null) {
-            scriptManager = new ScriptManager(this);
-        }
+        scriptManager = ((NakApp)getApplication()).getScriptManager();
         scriptManager.setNodeIndex(index);
 
         Log.d("StateLog", "Application index: " + index);

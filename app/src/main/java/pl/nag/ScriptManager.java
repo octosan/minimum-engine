@@ -81,7 +81,10 @@ public class ScriptManager {
     }
 
     public String getMovie() {
-        return getCurrentNode().getMovie();
+        if (currentIndex < script.getNodes().size())
+            return getCurrentNode().getMovie();
+        else
+            return null;
     }
 
     public String getName() {
