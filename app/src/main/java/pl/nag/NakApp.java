@@ -7,6 +7,8 @@ import android.util.Log;
  * Controller
  */
 public class NakApp extends Application {
+
+    public static final int TIME_LEFT_SECONDS = 10;
     public ScriptManager scriptManager = null;
 
     public NakApp() {

@@ -1,7 +1,6 @@
 package pl.nag;
 
 import android.os.CountDownTimer;
-import android.util.Log;
 import android.widget.ProgressBar;
 
 /**
@@ -10,7 +9,6 @@ import android.widget.ProgressBar;
 public class TimeLeftTimer extends CountDownTimer {
 
     private static final String TAG = TimeLeftTimer.class.getSimpleName();
-    private static final int MAX_SECONDS = 20;
     private static final int COUNT_DOWN_INTERVAL_MS = 50;
     private static final int ONE_SECOND_MS = 1000;
 
@@ -24,12 +22,12 @@ public class TimeLeftTimer extends CountDownTimer {
     }
 
     private static int getMillisInFuture() {
-        return ONE_SECOND_MS * MAX_SECONDS;
+        return ONE_SECOND_MS * NakApp.TIME_LEFT_SECONDS;
     }
 
     @Override
     public void onTick(long millisUntilFinished) {
-        int progress = (int) ((getMillisInFuture() - millisUntilFinished) / 10 / MAX_SECONDS);
+        int progress = (int) ((getMillisInFuture() - millisUntilFinished) / 10 / NakApp.TIME_LEFT_SECONDS);
         //Log.d(TAG, "progress" + progress + " millisUntilFinished=" + millisUntilFinished);
         progressBar.setProgress(100 - progress);
     }
