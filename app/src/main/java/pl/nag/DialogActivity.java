@@ -28,7 +28,7 @@ public class DialogActivity extends Activity {
     private static final List<Integer> ANSWERS_IDS = Arrays.asList(R.id.answer0, R.id.answer1, R.id.answer2, R.id.answer3);
     public static ScriptManager scriptManager = null;
 
-    @InjectView(R.id.description)
+    @InjectView(R.id.episode1)
     TextView description;
     @InjectView(R.id.question)
     TextView question;

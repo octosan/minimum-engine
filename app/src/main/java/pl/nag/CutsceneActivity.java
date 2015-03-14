@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import butterknife.ButterKnife;
@@ -16,7 +15,7 @@ public class CutsceneActivity extends Activity {
 
     @InjectView(R.id.name)
     TextView name;
-    @InjectView(R.id.description)
+    @InjectView(R.id.episode1)
     TextView description;
     @InjectView(R.id.showMovie)
     Button showMovie;
