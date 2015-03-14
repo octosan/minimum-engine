@@ -27,7 +27,7 @@ import pl.nag.model.Script;
 import pl.nag.model.ScriptManager;
 
 public class DialogActivity extends Activity {
-    private Map<Integer, Double> map = new HashMap<Integer, Double>();
+    private Map<Integer, Double> pointsMap = new HashMap<Integer, Double>();
     private Class nextNodeType;
 
     public static Script script = null;
@@ -65,7 +65,7 @@ public class DialogActivity extends Activity {
         description.setText(scriptManager.getDescription());
         TextView question = (TextView) findViewById(R.id.question);
         question.setText(scriptManager.getQuestion());
-        updateImage(scriptManager.getImage());
+        updateImage(scriptManager.getImageName());
 
         // Shuffling of buttons
         List<Integer> buttons = Arrays.asList(R.id.answer0, R.id.answer1, R.id.answer2, R.id.answer3);
@@ -76,7 +76,7 @@ public class DialogActivity extends Activity {
             if (answer != null && answer.getOptions() != null && answer.getOptions().get(i) != null) {
                 button.setText(answer.getOptions().get(i).getText());
             }
-            map.put(buttons.get(i), answer.getOptions().get(i).getValue());
+            pointsMap.put(buttons.get(i), answer.getOptions().get(i).getValue());
         }
     }
 
@@ -103,9 +103,9 @@ public class DialogActivity extends Activity {
 
     public void onClick(View view) {
         Intent nextIntent;
-        if (map.containsKey(view.getId())) {
+        if (pointsMap.containsKey(view.getId())) {
             nextIntent = new Intent(this, DialogActivity.class);
-            nextIntent.putExtra(ExtraKey.POINTS.name(), points + map.get(view.getId()));
+            nextIntent.putExtra(ExtraKey.POINTS.name(), points + pointsMap.get(view.getId()));
             nextIntent.putExtra(ExtraKey.INDEX.name(), index + 1);
         } else {
             return;
@@ -113,17 +113,17 @@ public class DialogActivity extends Activity {
         startActivity(nextIntent);
     }
 
-    private void updateImage(String image) {
-        if (image != null) {
+    private void updateImage(String imageName) {
+        if (imageName != null) {
             try {
-                InputStream ins = getResources().openRawResource(
-                        getResources().getIdentifier(image,
+                InputStream stream = getResources().openRawResource(
+                        getResources().getIdentifier(imageName,
                                 "raw", getPackageName()));
-                Bitmap myBitmap = BitmapFactory.decodeStream(ins);
-                ImageView myImage = (ImageView) findViewById(R.id.imageView);
-                myImage.setImageBitmap(myBitmap);
+                Bitmap bitmap = BitmapFactory.decodeStream(stream);
+                ImageView imageView = (ImageView) findViewById(R.id.imageView);
+                imageView.setImageBitmap(bitmap);
             } catch (Resources.NotFoundException e) {
-                GuiHelper.toast(this, image + " Not Found");
+                GuiHelper.toast(this, imageName + " Not Found");
             }
         }
     }

@@ -37,7 +37,7 @@ public class ScriptManager {
         return result;
     }
 
-    public String getImage() {
+    public String getImageName() {
         return getCurrentNode().getImage();
     }
 
