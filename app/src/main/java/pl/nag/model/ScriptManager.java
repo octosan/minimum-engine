@@ -1,12 +1,16 @@
 package pl.nag.model;
 
 public class ScriptManager {
-    int currentIndex = 0;
 
-    Script script;
+    private int currentIndex;
+    private Script script;
 
     public ScriptManager(Script script) {
         this.script = script;
+    }
+
+    private boolean isDialog() {
+        return getCurrentNode().getType().equals("dialog");
     }
 
     public Answer getNextAnswer() {
@@ -18,10 +22,6 @@ public class ScriptManager {
         }
         currentIndex++;
         return script.getNodes().get(currentIndex - 1).getAnswer();
-    }
-
-    private boolean isDialog() {
-        return getCurrentNode().getType().equals("dialog");
     }
 
     public String getDescription() {
@@ -37,6 +37,10 @@ public class ScriptManager {
         return result;
     }
 
+    public String getImage() {
+        return getCurrentNode().getImage();
+    }
+
     private Node getCurrentNode() {
         return script.getNodes().get(currentIndex);
     }
@@ -44,4 +48,5 @@ public class ScriptManager {
     private String notNull(String text) {
         return text != null ? text : "";
     }
+
 }

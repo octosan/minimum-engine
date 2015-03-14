@@ -2,14 +2,19 @@ package pl.nag;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 import java.util.Arrays;
 import java.util.Collections;
@@ -60,7 +65,7 @@ public class DialogActivity extends Activity {
         description.setText(scriptManager.getDescription());
         TextView question = (TextView) findViewById(R.id.question);
         question.setText(scriptManager.getQuestion());
-
+        updateImage(scriptManager.getImage());
 
         // Shuffling of buttons
         List<Integer> buttons = Arrays.asList(R.id.answer0, R.id.answer1, R.id.answer2, R.id.answer3);
@@ -68,7 +73,9 @@ public class DialogActivity extends Activity {
         Collections.shuffle(buttons);
         for (int i = 0; i < buttons.size(); i++) {
             Button button = (Button) findViewById(buttons.get(i));
-            button.setText(answer.getOptions().get(i).getText());
+            if (answer != null && answer.getOptions() != null && answer.getOptions().get(i) != null) {
+                button.setText(answer.getOptions().get(i).getText());
+            }
             map.put(buttons.get(i), answer.getOptions().get(i).getValue());
         }
     }
@@ -104,5 +111,20 @@ public class DialogActivity extends Activity {
             return;
         }
         startActivity(nextIntent);
+    }
+
+    private void updateImage(String image) {
+        if (image != null) {
+            try {
+                InputStream ins = getResources().openRawResource(
+                        getResources().getIdentifier(image,
+                                "raw", getPackageName()));
+                Bitmap myBitmap = BitmapFactory.decodeStream(ins);
+                ImageView myImage = (ImageView) findViewById(R.id.imageView);
+                myImage.setImageBitmap(myBitmap);
+            } catch (Resources.NotFoundException e) {
+                GuiHelper.toast(this, image + " Not Found");
+            }
+        }
     }
 }
