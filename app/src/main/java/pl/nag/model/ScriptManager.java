@@ -11,6 +11,7 @@ public class ScriptManager {
 
     private int currentIndex;
     private Script script;
+    private String videoId;
 
     public ScriptManager(Context context) {
         try {
@@ -75,5 +76,9 @@ public class ScriptManager {
             return node.getType();
         else
             return null;
+    }
+
+    public String getMovie() {
+        return getCurrentNode().getMovie();
     }
 }

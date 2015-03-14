@@ -3,6 +3,7 @@
   "nodes": [
     {
       "type": "dialog",
+      "image": "dialog2.jpg",
       "question": {
         "name": "Zenek",
         "text": "W takim razie otoczymy ich od srodka!"
@@ -25,11 +26,6 @@
           }
         ]
       }
-    },
-    {
-      "type": "cutscene",
-      "name": "Goldeneye opening [HD]",
-      "movie": "mSvuHSqqGSw"
     },
     {
       "type": "scene",
@@ -62,6 +58,11 @@
           }
         ]
       }
+    },
+    {
+      "type": "cutscene",
+      "name": "Goldeneye opening [HD]",
+      "movie": "mSvuHSqqGSw"
     },
     {
       "type": "dialog",

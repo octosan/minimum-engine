@@ -1,7 +1,6 @@
 package pl.nag;
 
 import android.app.Activity;
-import android.app.Dialog;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -34,6 +33,7 @@ public class DialogActivity extends Activity {
     private double points;
     private int index;
     private int episode;
+    private String movie;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,6 +62,8 @@ public class DialogActivity extends Activity {
         TextView question = (TextView) findViewById(R.id.question);
         question.setText(scriptManager.getQuestion());
         updateImage(scriptManager.getImageName());
+        movie = scriptManager.getMovie();
+
 
         // Shuffling of buttons
         List<Integer> buttons = Arrays.asList(R.id.answer0, R.id.answer1, R.id.answer2, R.id.answer3);
@@ -79,7 +81,7 @@ public class DialogActivity extends Activity {
     private Class getNextNodeType(String nextNodeType) {
         if (nextNodeType != null) {
             if (nextNodeType.equals("scene")) {
-                return CutsceneActivity.class;
+                return DialogActivity.class;//TODO
             }
             if (nextNodeType.equals("cutscene")) {
                 return CutsceneActivity.class;
@@ -108,7 +110,7 @@ public class DialogActivity extends Activity {
 
         if (pointsMap.containsKey(view.getId())) {
             nextIntent = new Intent(this, nextNodeType);
-            nextIntent.putExtra(ExtraKey.VIDEOID.name(), "mSvuHSqqGSw"); // TODO
+            nextIntent.putExtra(ExtraKey.VIDEOID.name(), movie); // TODO
             nextIntent.putExtra(ExtraKey.POINTS.name(), points + pointsMap.get(view.getId()));
             nextIntent.putExtra(ExtraKey.INDEX.name(), index + 1);
         } else {
@@ -118,17 +120,14 @@ public class DialogActivity extends Activity {
     }
 
     private void updateImage(String imageName) {
-        if (imageName != null) {
-            try {
-                InputStream stream = getResources().openRawResource(
-                        getResources().getIdentifier(imageName,
-                                "raw", getPackageName()));
-                Bitmap bitmap = BitmapFactory.decodeStream(stream);
+        try {
+            Bitmap bitmap = new ImageHelper(this).getRawByFileName(imageName);
+            if (bitmap != null) {
                 ImageView imageView = (ImageView) findViewById(R.id.imageView);
                 imageView.setImageBitmap(bitmap);
-            } catch (Resources.NotFoundException e) {
-                GuiHelper.toast(this, imageName + " Not Found");
             }
+        } catch (Resources.NotFoundException e) {
+            GuiHelper.toast(this, imageName + " Not Found");
         }
     }
 }
