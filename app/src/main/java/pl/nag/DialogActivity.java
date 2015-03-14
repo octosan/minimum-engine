@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -39,6 +40,7 @@ public class DialogActivity extends Activity {
     private double points;
     private int index;
     private int episode;
+    private String image;
     private List<Button> buttons = new ArrayList<Button>();
     private CountDownTimer timeLeftTimer;
 
@@ -53,10 +55,10 @@ public class DialogActivity extends Activity {
         index = incomingIntent.getIntExtra(ExtraKey.INDEX.name(), 0);
         points = incomingIntent.getDoubleExtra(ExtraKey.POINTS.name(), 0);
         episode = incomingIntent.getIntExtra(ExtraKey.EPISODE.name(), 0);
+        image = incomingIntent.getStringExtra(ExtraKey.IMAGE.name());
 
-        if (scriptManager == null) {
-            scriptManager = new ScriptManager(this);
-        }
+
+        scriptManager = ((NakApp)getApplication()).getScriptManager();
         scriptManager.setNodeIndex(index);
 
         Log.d("StateLog", "Application index: " + index);
@@ -65,11 +67,15 @@ public class DialogActivity extends Activity {
         // View setup
         description.setText(scriptManager.getDescription());
         question.setText(scriptManager.getQuestion());
-        updateImage(scriptManager.getImageName());
+        if(scriptManager.getImageName() != null){
+            image = scriptManager.getImageName();
+        }
+        updateImage(image);
 
         timeLeftTimer = new TimeLeftTimer(timeLeftBar, new OnFinishCallback() {
             @Override
             public void onFinish() {
+                GuiHelper.toast(DialogActivity.this, "...");
                 continueToNextNode();
             }
         }).start();
@@ -110,11 +116,9 @@ public class DialogActivity extends Activity {
 
         Intent nextIntent;
         nextIntent = new Intent(this, ((NakApp) getApplication()).getNextActivityClass());
-
         nextIntent.putExtra(ExtraKey.VIDEO_ID.name(), scriptManager.getMovie());
         nextIntent.putExtra(ExtraKey.POINTS.name(), points);
         nextIntent.putExtra(ExtraKey.INDEX.name(), index + 1);
-
         nextIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
 
         Log.i("Navi", "Going to index " + (index + 1));
