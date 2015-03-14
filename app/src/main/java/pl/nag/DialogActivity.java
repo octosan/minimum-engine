@@ -1,6 +1,7 @@
 package pl.nag;
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -15,7 +16,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.io.InputStream;
-import java.io.UnsupportedEncodingException;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
@@ -23,15 +23,13 @@ import java.util.List;
 import java.util.Map;
 
 import pl.nag.model.Answer;
-import pl.nag.model.Script;
 import pl.nag.model.ScriptManager;
 
 public class DialogActivity extends Activity {
     private Map<Integer, Double> pointsMap = new HashMap<Integer, Double>();
     private Class nextNodeType;
 
-    public static Script script = null;
-    public static ScriptManager scriptManager;
+    public static ScriptManager scriptManager = null;
 
     private double points;
     private int index;
@@ -48,14 +46,12 @@ public class DialogActivity extends Activity {
         points = incomingIntent.getDoubleExtra(ExtraKey.POINTS.name(), 0);
         episode = incomingIntent.getIntExtra(ExtraKey.EPISODE.name(), 0);
 
-        try {
-            if (script == null) {
-                script = new Parser().parse(this);
-                scriptManager = new ScriptManager(script);
-            }
-        } catch (UnsupportedEncodingException e) {
-            throw new RuntimeException(e);
+        if (scriptManager == null) {
+            scriptManager = new ScriptManager(this);
         }
+        scriptManager.setNodeIndex(index);
+
+        nextNodeType = getNextNodeType(scriptManager.getNextNodeType());
 
         Log.d("StateLog", "Application index: " + index);
         Log.d("StateLog", "Points: " + points);
@@ -78,6 +74,19 @@ public class DialogActivity extends Activity {
             }
             pointsMap.put(buttons.get(i), answer.getOptions().get(i).getValue());
         }
+    }
+
+    private Class getNextNodeType(String nextNodeType) {
+        if (nextNodeType.equals("scene")) {
+            return Cutscene.class;
+        }
+        if (nextNodeType.equals("cutscene")) {
+            return Cutscene.class;
+        }
+        if (nextNodeType.equals("dialog")) {
+            return Dialog.class;
+        }
+        return null;
     }
 
     @Override
@@ -103,8 +112,10 @@ public class DialogActivity extends Activity {
 
     public void onClick(View view) {
         Intent nextIntent;
+
         if (pointsMap.containsKey(view.getId())) {
-            nextIntent = new Intent(this, DialogActivity.class);
+            nextIntent = new Intent(this, nextNodeType);
+            nextIntent.putExtra(ExtraKey.VIDEOID.name(), "mSvuHSqqGSw"); // TODO
             nextIntent.putExtra(ExtraKey.POINTS.name(), points + pointsMap.get(view.getId()));
             nextIntent.putExtra(ExtraKey.INDEX.name(), index + 1);
         } else {

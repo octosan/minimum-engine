@@ -1,12 +1,24 @@
 package pl.nag.model;
 
+import android.content.Context;
+import android.util.Log;
+
+import java.io.UnsupportedEncodingException;
+
+import pl.nag.GuiHelper;
+import pl.nag.Parser;
+
 public class ScriptManager {
 
     private int currentIndex;
     private Script script;
 
-    public ScriptManager(Script script) {
-        this.script = script;
+    public ScriptManager(Context context) {
+        try {
+            script = new Parser().parse(context);
+        } catch (UnsupportedEncodingException e) {
+            GuiHelper.toast(context, e.getMessage());
+        }
     }
 
     private boolean isDialog() {
@@ -49,4 +61,20 @@ public class ScriptManager {
         return text != null ? text : "";
     }
 
+    public void setNodeIndex(int currentIndex) {
+        this.currentIndex = currentIndex;
+    }
+
+    public String getNextNodeType() {
+        currentIndex ++;
+        Node node = null;
+        if (script.getNodes().size() > currentIndex)
+            node = getCurrentNode();
+        currentIndex--;
+
+        if (node != null)
+            return node.getType();
+        else
+            return null;
+    }
 }
