@@ -40,6 +40,7 @@ public class DialogActivity extends Activity {
     private double points;
     private int index;
     private int episode;
+    private String image;
     private List<Button> buttons = new ArrayList<Button>();
     private CountDownTimer timeLeftTimer;
 
@@ -54,6 +55,8 @@ public class DialogActivity extends Activity {
         index = incomingIntent.getIntExtra(ExtraKey.INDEX.name(), 0);
         points = incomingIntent.getDoubleExtra(ExtraKey.POINTS.name(), 0);
         episode = incomingIntent.getIntExtra(ExtraKey.EPISODE.name(), 0);
+        image = incomingIntent.getStringExtra(ExtraKey.IMAGE.name());
+
 
         if (scriptManager == null) {
             scriptManager = new ScriptManager(this);
@@ -66,7 +69,10 @@ public class DialogActivity extends Activity {
         // View setup
         description.setText(scriptManager.getDescription());
         question.setText(scriptManager.getQuestion());
-        updateImage(scriptManager.getImageName());
+        if(scriptManager.getImageName() != null){
+            image = scriptManager.getImageName();
+        }
+        updateImage(image);
 
         timeLeftTimer = new TimeLeftTimer(timeLeftBar, new OnFinishCallback() {
             @Override
