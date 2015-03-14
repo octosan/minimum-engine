@@ -12,6 +12,12 @@ import android.widget.Button;
 import java.util.Random;
 
 public class MainActivity extends Activity {
+    public static String INTENT_INDEX = "INDEX";
+    public static String INTENT_POINTS = "POINTS";
+
+    public static Script script = null;
+    public static ScriptQuestionsTraverser traverser;
+
 
     private int points;
     private int index;
@@ -27,16 +33,25 @@ public class MainActivity extends Activity {
         index = incomingIntent.getIntExtra(ExtraKey.INDEX.name(), 0);
         points = incomingIntent.getIntExtra(ExtraKey.POINTS.name(), 0);
         episode = incomingIntent.getIntExtra(ExtraKey.EPISODE.name(), 0);
+       
+        try {
+            if (script == null) {
+                script = new Parser().parse(this);
+                traverser = new ScriptQuestionsTraverser(script);
+            }
+        } catch (UnsupportedEncodingException e) {
+            throw new RuntimeException(e);
+        }
 
         Log.d("StateLog", "Application index: " + index);
         Log.d("StateLog", "Points: " + points);
 
         int buttonCount = 4;
-        Button[] b = {
-                (Button) findViewById(R.id.answer0),
-                (Button) findViewById(R.id.answer1),
-                (Button) findViewById(R.id.answer2),
-                (Button) findViewById(R.id.answer3)};
+        Button[] b =  {
+                (Button)findViewById(R.id.answer0),
+                (Button)findViewById(R.id.answer1),
+                (Button)findViewById(R.id.answer2),
+                (Button)findViewById(R.id.answer3)};
 
         Random r = new Random();
         r.setSeed(2531 + index * 123143 + points * 43223);
@@ -67,6 +82,7 @@ public class MainActivity extends Activity {
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
     public void onClick(View view) {
         Intent nextIntent;
 
@@ -81,16 +97,14 @@ public class MainActivity extends Activity {
                 nextIntent = new Intent(this, MainActivity.class);
                 break;
             case (R.id.answer3):
-                nextIntent = new Intent(this, CutsceneActivity.class);
-                nextIntent.putExtra(ExtraKey.VIDEOID.name(), "mSvuHSqqGSw");
+                nextIntent = new Intent(this, MainActivity.class);
                 break;
             default:
-                return;
+                nextIntent = null;
         }
 
-        nextIntent.putExtra(ExtraKey.POINTS.name(), points);
-        nextIntent.putExtra(ExtraKey.INDEX.name(), index + 1);
-        nextIntent.putExtra(ExtraKey.EPISODE.name(), episode);
+        nextIntent.putExtra("POINTS", points);
+        nextIntent.putExtra("INDEX", index+1);
         startActivity(nextIntent);
     }
 }
