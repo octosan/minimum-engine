@@ -18,7 +18,7 @@ public class MenuActivity extends Activity {
     }
 
     public void startGame(View view) {
-        Intent intent = new Intent(this, ((NakApp) getApplication()).getNextActivityClass());
+        Intent intent = new Intent(this, ((NakApp) getApplication()).getFirstActivityClass());
         startActivity(intent);
     }
 
