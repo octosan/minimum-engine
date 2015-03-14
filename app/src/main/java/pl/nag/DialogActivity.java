@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -33,6 +34,7 @@ public class DialogActivity extends Activity {
     private int index;
     private int episode;
     private List<Button> buttons = new ArrayList<Button>();
+    private CountDownTimer timeLeftTimer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,7 +63,7 @@ public class DialogActivity extends Activity {
         updateImage(scriptManager.getImageName());
 
         ProgressBar timeLeftBar = (ProgressBar) findViewById(R.id.timeLeft);
-        new TimeLeftTimer(timeLeftBar, new OnFinishCallback() {
+        timeLeftTimer = new TimeLeftTimer(timeLeftBar, new OnFinishCallback() {
             @Override
             public void onFinish() {
                 for (Button b : buttons) {
@@ -102,7 +104,6 @@ public class DialogActivity extends Activity {
 
     public void onClick(View view) {
         Intent nextIntent;
-
         if (pointsMap.containsKey(view.getId())) {
             nextIntent = new Intent(this, ((NakApp) getApplication()).getNextActivityClass());
             nextIntent.putExtra(ExtraKey.VIDEOID.name(), scriptManager.getMovie());
@@ -111,6 +112,7 @@ public class DialogActivity extends Activity {
         } else {
             return;
         }
+        nextIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(nextIntent);
     }
 
@@ -124,5 +126,11 @@ public class DialogActivity extends Activity {
         } catch (Resources.NotFoundException e) {
             GuiHelper.toast(this, imageName + " Not Found");
         }
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        timeLeftTimer.cancel();
     }
 }

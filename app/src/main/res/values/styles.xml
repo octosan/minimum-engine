@@ -2,12 +2,10 @@
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="android:Theme.Black.NoTitleBar.Fullscreen">
-        <!--
         <item name="android:buttonStyle">@style/button</item>
-        -->
     </style>
 
-    <style name="button">
+    <style name="button" parent="android:Widget.Button">
         <item name="android:textColor">#fff</item>
         <item name="android:background" >@drawable/buttonshape</item>
         <item name="android:gravity">center</item>
