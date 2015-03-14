@@ -41,7 +41,7 @@ public class ScoreActivity extends Activity {
     public void continueGame(View view) {
         Intent intent = getMainActivity();
         // TODO
-        intent.putExtra(MainActivity.ExtraKey.EPISODE.name(), 0);
+        intent.putExtra(ExtraKey.EPISODE.name(), 0);
         startActivity(intent);
     }
 

@@ -13,8 +13,6 @@ import java.util.Random;
 
 public class MainActivity extends Activity {
 
-    public static enum ExtraKey {INDEX, POINTS, EPISODE, VIDEOID}
-
     private int points;
     private int index;
     private int episode;
@@ -83,7 +81,7 @@ public class MainActivity extends Activity {
                 nextIntent = new Intent(this, MainActivity.class);
                 break;
             case (R.id.answer3):
-                nextIntent = new Intent(this, Cutscene.class);
+                nextIntent = new Intent(this, CutsceneActivity.class);
                 nextIntent.putExtra(ExtraKey.VIDEOID.name(), "mSvuHSqqGSw");
                 break;
             default:
