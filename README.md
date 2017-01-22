@@ -1,4 +1,7 @@
 # Narrative Adventure Game
+
+## game prototype - BrainCode 2015 hackathon
+
 Episode 1
 
 [https://github.com/octosan/nag/releases]
